@@ -1,1 +1,7 @@
-{}
+{
+    "tokens": {
+        "yesterday": "School holiday yesterday",
+        "today": "School holiday today",
+        "tomorrow": "School holiday tomorrow"
+    }
+}

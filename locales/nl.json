@@ -1,1 +1,7 @@
-{}
+{
+    "tokens": {
+        "yesterday": "Schoolvakantie gisteren",
+        "today": "Schoolvakantie vandaag",
+        "tomorrow": "Schoolvakantie morgen"
+    }
+}
