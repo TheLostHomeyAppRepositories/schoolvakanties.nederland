@@ -1,0 +1,24 @@
+{
+  "id": "schoolvakanties.nederland",
+  "version": "0.0.1",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "name": {
+    "en": "Schoolvakanties"
+  },
+  "description": {
+    "en": "Controlleer of het vandaag schoolvakantie is of niet"
+  },
+  "category": [
+    "tools"
+  ],
+  "permissions": [],
+  "images": {
+    "large": "/assets/images/large.png",
+    "small": "/assets/images/small.png"
+  },
+  "author": {
+    "name": "Elmar Kouwenhoven",
+    "email": "elmarkou@gmail.com"
+  }
+}

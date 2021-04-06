@@ -1,0 +1,95 @@
+{
+  "id": "schoolvakanties.nederland",
+  "version": "0.0.1",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "name": {
+    "en": "Schoolvakanties",
+    "nl": "Schoolvakanties"
+  },
+  "description": {
+    "en": "Controlleer of het vandaag schoolvakantie is of niet",
+    "nl": "Controlleer of het vandaag schoolvakantie is of niet"
+  },
+  "category": [
+    "tools"
+  ],
+  "permissions": [],
+  "flow": {
+    "conditions": [{
+      "id": "is_school_holiday",
+      "title": {
+        "en": "Het is schoolvakantie",
+        "nl": "Het is schoolvakantie"
+      },
+      "titleFormatted": {
+        "en": "Het is !{{wel|geen}} schoolvakantie in [[regio]]",
+        "nl": "Het is !{{wel|geen}} schoolvakantie in [[regio]]"
+      },
+      "hint": {
+        "en": "De flow zal doorgaan als het wel/geen schoolvakantie is",
+        "nl": "De flow zal doorgaan als het wel/geen schoolvakantie is"
+      },
+      "args": [{
+        "name": "day",
+        "type": "dropdown",
+        "values": [{
+            "id": "yesterday",
+            "label": { 
+              "en" : "Yesterday", 
+              "nl" : "Gisteren" 
+            }
+          },
+          {
+            "id": "today",
+            "label": {
+              "en" : "Today",
+              "nl" : "Vandaag"
+            }
+          },
+          {
+            "id": "tomorrow",
+            "label": {
+              "en" : "Tomorrow",
+              "nl" : "Morgen"
+            }
+          }
+        ]
+      },{
+        "name": "regio",
+        "type": "dropdown",
+        "values": [{
+            "id": "noord",
+            "label": { 
+              "en" : "Noord Holland", 
+              "nl" : "Noord Holland" 
+            }
+          },
+          {
+            "id": "midden",
+            "label": {
+              "en" : "Midden Nederland",
+              "nl" : "Midden Nederland"
+            }
+          },
+          {
+            "id": "zuid",
+            "label": {
+              "en" : "Zuid Holland",
+              "nl" : "Zuid Holland"
+            }
+          }
+        ]
+      }]
+    }]
+  },
+  "brandColor" : "#01689b",
+  "images": {
+    "large": "/assets/images/large.png",
+    "small": "/assets/images/small.png"
+  },
+  "author": {
+    "name": "Elmar Kouwenhoven",
+    "email": "elmarkou@gmail.com"
+  }
+}

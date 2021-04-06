@@ -1,0 +1,13 @@
+{
+  "name": "schoolvakanties.nederland",
+  "version": "0.0.1",
+  "main": "app.js",
+  "devDependencies": {
+    "homey": "^2.14.2"
+  },
+  "dependencies": {
+    "moment": "^2.29.1",
+    "moment-range": "^4.0.2",
+    "node-fetch": "^2.6.1"
+  }
+}
