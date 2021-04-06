@@ -1,6 +1,6 @@
 {
   "id": "schoolvakanties.nederland",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "name": {
@@ -68,7 +68,7 @@
           {
             "id": "midden",
             "label": {
-              "en" : "Middle Nederland",
+              "en" : "Central Netherlands",
               "nl" : "Midden Nederland"
             }
           },
@@ -104,5 +104,9 @@
         "username": "elmarkouwenhoven"
       }
     }
+  },
+  "tags": {
+    "en": ["school","holiday"],
+    "nl": ["school","vakantie"]
   }
 }
