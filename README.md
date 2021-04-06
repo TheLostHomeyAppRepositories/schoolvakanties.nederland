@@ -28,6 +28,9 @@ If you like the app, you are free to sponsor.
 
 ### Release Notes
 
+#### 1.0.3
+- Added token documentation
+
 #### 1.0.2
 - Added tokens for School holiday today, yesterday and tomorrow.
 

@@ -1,6 +1,6 @@
 {
   "id": "schoolvakanties.nederland",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "name": {
@@ -16,74 +16,79 @@
   ],
   "permissions": [],
   "flow": {
-    "conditions": [{
-      "id": "is_school_holiday",
-      "title": {
-        "en": "It is school holiday",
-        "nl": "Het is schoolvakantie"
-      },
-      "titleFormatted": {
-        "en": "[[day]] it !{{is|isn't}} school holiday in [[regio]]",
-        "nl": "[[day]] is het !{{wel|geen}} schoolvakantie in [[regio]]"
-      },
-      "hint": {
-        "en": "This flow will continue when there is/isn't a school holiday",
-        "nl": "De flow zal doorgaan als het wel/geen schoolvakantie is"
-      },
-      "args": [{
-          "name": "day",
-          "type": "dropdown",
-          "values": [{
-              "id": "yesterday",
-              "label": {
-                "en": "Yesterday",
-                "nl": "Gisteren"
-              }
-            },
-            {
-              "id": "today",
-              "label": {
-                "en": "Today",
-                "nl": "Vandaag"
-              }
-            },
-            {
-              "id": "tomorrow",
-              "label": {
-                "en": "Tomorrow",
-                "nl": "Morgen"
-              }
-            }
-          ]
+    "conditions": [
+      {
+        "id": "is_school_holiday",
+        "title": {
+          "en": "It is school holiday",
+          "nl": "Het is schoolvakantie"
         },
-        {
-          "name": "regio",
-          "type": "dropdown",
-          "values": [{
-              "id": "noord",
-              "label": {
-                "en": "North Holland",
-                "nl": "Noord Holland"
+        "titleFormatted": {
+          "en": "[[day]] it !{{is|isn't}} school holiday in [[regio]]",
+          "nl": "[[day]] is het !{{wel|geen}} schoolvakantie in [[regio]]"
+        },
+        "hint": {
+          "en": "This flow will continue when there is/isn't a school holiday",
+          "nl": "De flow zal doorgaan als het wel/geen schoolvakantie is"
+        },
+        "args": [
+          {
+            "name": "day",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "yesterday",
+                "label": {
+                  "en": "Yesterday",
+                  "nl": "Gisteren"
+                }
+              },
+              {
+                "id": "today",
+                "label": {
+                  "en": "Today",
+                  "nl": "Vandaag"
+                }
+              },
+              {
+                "id": "tomorrow",
+                "label": {
+                  "en": "Tomorrow",
+                  "nl": "Morgen"
+                }
               }
-            },
-            {
-              "id": "midden",
-              "label": {
-                "en": "Central Netherlands",
-                "nl": "Midden Nederland"
+            ]
+          },
+          {
+            "name": "regio",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "noord",
+                "label": {
+                  "en": "North Holland",
+                  "nl": "Noord Holland"
+                }
+              },
+              {
+                "id": "midden",
+                "label": {
+                  "en": "Central Netherlands",
+                  "nl": "Midden Nederland"
+                }
+              },
+              {
+                "id": "zuid",
+                "label": {
+                  "en": "South Holland",
+                  "nl": "Zuid Holland"
+                }
               }
-            },
-            {
-              "id": "zuid",
-              "label": {
-                "en": "South Holland",
-                "nl": "Zuid Holland"
-              }
-            }
-          ]
-        }
-      ]
-    }]
+            ]
+          }
+        ]
+      }
+    ]
   },
   "brandColor": "#01689b",
   "images": {
@@ -108,7 +113,13 @@
     }
   },
   "tags": {
-    "en": ["school", "holiday"],
-    "nl": ["school", "vakantie"]
+    "en": [
+      "school",
+      "holiday"
+    ],
+    "nl": [
+      "school",
+      "vakantie"
+    ]
   }
 }
