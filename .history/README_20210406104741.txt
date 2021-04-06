@@ -1,1 +1,0 @@
-Controlleer of het gisteren/vandaag/morgen schoolvakantie is of niet.
