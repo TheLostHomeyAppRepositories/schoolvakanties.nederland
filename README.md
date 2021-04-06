@@ -6,12 +6,15 @@ Check if today / yesterday / tomorrow is a school holiday in the Netherlands.
 ## Conditions
 - Today / Yesterday / Tomorrow it is school holiday in North Holland / Central Netherlands / South Holland
 
-## Regions supported
-The following regions are supported:
-
+## Regions
 - North Holland
 - Central Netherlands
 - South Holland
+
+## Tokens
+- School holiday yesterday
+- School holiday today
+- School holiday tomorrow
 
 ## Acknowledgements
 The open-data API from [https://www.rijksoverheid.nl/opendata/schoolvakanties](https://www.rijksoverheid.nl/opendata/schoolvakanties).
