@@ -88,11 +88,16 @@
     "large": "/assets/images/large.png",
     "small": "/assets/images/small.png"
   },
+  "homepage": "https://github.com/elmarkou/homey.schoolvakanties.nederland",
+  "source": "https://github.com/elmarkou/homey.schoolvakanties.nederland",
+  "bugs": {
+    "url": "https://github.com/elmarkou/homey.schoolvakanties.nederland/issues"
+  },
+  "support": "mailto:elmarkou@gmail.com",
   "author": {
     "name": "Elmar Kouwenhoven",
     "email": "elmarkou@gmail.com"
   },
-  "support": "mailto:elmarkou@gmail.com",
   "contributing": {
     "donate": {
       "paypal": {
