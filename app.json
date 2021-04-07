@@ -1,6 +1,6 @@
 {
   "id": "schoolvakanties.nederland",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "name": {
@@ -8,8 +8,8 @@
     "nl": "Schoolvakanties"
   },
   "description": {
-    "en": "Check if yesterday/today/tomorrow is or isn't a school holiday in the Netherlands",
-    "nl": "Controleer of het gisteren/vandaag/morgen schoolvakantie is of niet in Nederland"
+    "en": "School holidays to be used in your flow",
+    "nl": "Schoolvakanties te gebruiken in je flow"
   },
   "category": [
     "tools"
@@ -25,7 +25,7 @@
         },
         "titleFormatted": {
           "en": "[[day]] it !{{is|isn't}} school holiday in [[regio]]",
-          "nl": "[[day]] is het !{{wel|geen}} schoolvakantie in [[regio]]"
+          "nl": "[[day]] is het !{{|geen}} schoolvakantie in [[regio]]"
         },
         "hint": {
           "en": "This flow will continue when there is/isn't a school holiday",
@@ -82,6 +82,118 @@
                 "label": {
                   "en": "South Holland",
                   "nl": "Zuid Holland"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "is_specifiec_school_holiday",
+        "title": {
+          "en": "It is a specific school holiday",
+          "nl": "Het is een specifieke schoolvakantie"
+        },
+        "titleFormatted": {
+          "en": "[[day]] it !{{is|isn't}} [[holiday]] in [[regio]]",
+          "nl": "[[day]] is het !{{|geen}} [[holiday]] in [[regio]]"
+        },
+        "hint": {
+          "en": "This flow will continue when there is/isn't a specific school holiday",
+          "nl": "De flow zal doorgaan als het wel/geen specifieke schoolvakantie is"
+        },
+        "args": [
+          {
+            "name": "day",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "yesterday",
+                "label": {
+                  "en": "Yesterday",
+                  "nl": "Gisteren"
+                }
+              },
+              {
+                "id": "today",
+                "label": {
+                  "en": "Today",
+                  "nl": "Vandaag"
+                }
+              },
+              {
+                "id": "tomorrow",
+                "label": {
+                  "en": "Tomorrow",
+                  "nl": "Morgen"
+                }
+              }
+            ]
+          },
+          {
+            "name": "regio",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "noord",
+                "label": {
+                  "en": "North Holland",
+                  "nl": "Noord Holland"
+                }
+              },
+              {
+                "id": "midden",
+                "label": {
+                  "en": "Central Netherlands",
+                  "nl": "Midden Nederland"
+                }
+              },
+              {
+                "id": "zuid",
+                "label": {
+                  "en": "South Holland",
+                  "nl": "Zuid Holland"
+                }
+              }
+            ]
+          },
+          {
+            "name": "holiday",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "herfstvakantie",
+                "label": {
+                  "en": "Autumn break",
+                  "nl": "Herfstvakantie"
+                }
+              },
+              {
+                "id": "kerstvakantie",
+                "label": {
+                  "en": "Christmas break",
+                  "nl": "Kerstvakantie"
+                }
+              },
+              {
+                "id": "voorjaarsvakantie",
+                "label": {
+                  "en": "Spring break",
+                  "nl": "Voorjaarsvakantie"
+                }
+              },
+              {
+                "id": "meivakantie",
+                "label": {
+                  "en": "May holidays",
+                  "nl": "Meivakantie"
+                }
+              },
+              {
+                "id": "zomervakantie",
+                "label": {
+                  "en": "Summer holiday",
+                  "nl": "Zomervakantie"
                 }
               }
             ]

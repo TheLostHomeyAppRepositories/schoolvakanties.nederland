@@ -16,6 +16,7 @@ class SchoolHolidayApp extends Homey.App {
   async onInit() {
     this.log('Schoolvakanties Nederland has been initialized');
     let isSchoolHolidayCondition = this.homey.flow.getConditionCard('is_school_holiday');
+    let isSpecificSchoolHolidayCondition = this.homey.flow.getConditionCard('is_specifiec_school_holiday');
     
     // Tokens
     this.tokenYesterday = await this.homey.flow.createToken('SchoolHolidayYesterday', {
@@ -34,7 +35,15 @@ class SchoolHolidayApp extends Homey.App {
     isSchoolHolidayCondition.registerRunListener(async (args, state) => {
       let holidayDates;
       const regions = await this.resolveHolidayData();
-      holidayDates = this.processData(regions, args.region)
+      holidayDates = this.processData(regions, args.regio)
+      return this.isSchoolHoliday(args.day, holidayDates);
+    });
+
+    isSpecificSchoolHolidayCondition.registerRunListener(async (args, state) => {
+      let holidayDates;
+      let regions = await this.resolveHolidayData();
+      regions = regions.filter( vacation => vacation.type.trim().toLowerCase() === args.holiday);
+      holidayDates = this.processData(regions, args.regio)
       return this.isSchoolHoliday(args.day, holidayDates);
     });
   }
@@ -49,7 +58,6 @@ class SchoolHolidayApp extends Homey.App {
     await this.tokenYesterday.setValue(dates.includes(days['yesterday']));
     await this.tokenToday.setValue(dates.includes(days['today']));
     await this.tokenTomorrow.setValue(dates.includes(days['tomorrow']));
-
     return dates.includes(days[day]);
   }
 
