@@ -1,6 +1,6 @@
 {
   "id": "schoolvakanties.nederland",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "name": {
@@ -35,7 +35,7 @@
           {
             "name": "day",
             "type": "dropdown",
-            "values": [             
+            "values": [
               {
                 "id": "today",
                 "label": {
@@ -106,7 +106,7 @@
           {
             "name": "day",
             "type": "dropdown",
-            "values": [              
+            "values": [
               {
                 "id": "today",
                 "label": {

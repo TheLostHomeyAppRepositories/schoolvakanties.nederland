@@ -13,5 +13,8 @@
   },
   "1.1.0": {
     "en": "Added new condition to specify the type of school holiday "
+  },
+  "1.1.1": {
+    "en": "Added caching to prevent multiple API Calls"
   }
 }
