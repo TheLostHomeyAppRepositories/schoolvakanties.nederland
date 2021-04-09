@@ -17,7 +17,11 @@ class SchoolHolidayApp extends Homey.App {
     this.log('Schoolvakanties Nederland has been initialized');
     let isSchoolHolidayCondition = this.homey.flow.getConditionCard('is_school_holiday');
     let isSpecificSchoolHolidayCondition = this.homey.flow.getConditionCard('is_specifiec_school_holiday');
-    
+
+    // CachedData
+    this.schoolyear;
+    this.cachedHolidayData = [];
+
     // Tokens
     this.tokenYesterday = await this.homey.flow.createToken('SchoolHolidayYesterday', {
       type: 'boolean',
@@ -42,7 +46,7 @@ class SchoolHolidayApp extends Homey.App {
     isSpecificSchoolHolidayCondition.registerRunListener(async (args, state) => {
       let holidayDates;
       let regions = await this.resolveHolidayData();
-      regions = regions.filter( vacation => vacation.type.trim().toLowerCase() === args.holiday);
+      regions = regions.filter(vacation => vacation.type.trim().toLowerCase() === args.holiday);
       holidayDates = this.processData(regions, args.regio)
       return this.isSchoolHoliday(args.day, holidayDates);
     });
@@ -84,12 +88,28 @@ class SchoolHolidayApp extends Homey.App {
   }
 
   async resolveHolidayData() {
-    const holidayData = await this.getHolidays()
-    return holidayData;
+    this.cachedHolidayData = await this.fetchHolidays()
+    return this.cachedHolidayData;
   }
 
-  async getHolidays() {
+  isChangedSchoolYear(schoolyear) {
+    return this.schoolyear !== schoolyear || this.schoolyear === undefined
+  }
+
+  async fetchHolidays() {
+    // Get Schoolyear
     const schoolyear = `${moment().get('year') - 1}-${moment().get('year')}`;
+    // Check for changse
+    if (this.isChangedSchoolYear(schoolyear)) {
+      this.cachedHolidayData = [];
+    }
+    // Return cachedData to prevent extra Api calls
+    if (this.cachedHolidayData.length > 0) {      
+      return this.cachedHolidayData;
+    }
+    // Set Schoolyear
+    this.schoolyear = schoolyear;
+    // Call API
     const apiEndpoint = `https://opendata.rijksoverheid.nl/v1/sources/rijksoverheid/infotypes/schoolholidays/schoolyear/${schoolyear}?output=json`,
       response = await fetch(apiEndpoint),
       data = await response.json();

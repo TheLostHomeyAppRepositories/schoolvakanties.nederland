@@ -35,14 +35,7 @@
           {
             "name": "day",
             "type": "dropdown",
-            "values": [
-              {
-                "id": "yesterday",
-                "label": {
-                  "en": "Yesterday",
-                  "nl": "Gisteren"
-                }
-              },
+            "values": [             
               {
                 "id": "today",
                 "label": {
@@ -55,6 +48,13 @@
                 "label": {
                   "en": "Tomorrow",
                   "nl": "Morgen"
+                }
+              },
+              {
+                "id": "yesterday",
+                "label": {
+                  "en": "Yesterday",
+                  "nl": "Gisteren"
                 }
               }
             ]
@@ -106,14 +106,7 @@
           {
             "name": "day",
             "type": "dropdown",
-            "values": [
-              {
-                "id": "yesterday",
-                "label": {
-                  "en": "Yesterday",
-                  "nl": "Gisteren"
-                }
-              },
+            "values": [              
               {
                 "id": "today",
                 "label": {
@@ -126,6 +119,13 @@
                 "label": {
                   "en": "Tomorrow",
                   "nl": "Morgen"
+                }
+              },
+              {
+                "id": "yesterday",
+                "label": {
+                  "en": "Yesterday",
+                  "nl": "Gisteren"
                 }
               }
             ]

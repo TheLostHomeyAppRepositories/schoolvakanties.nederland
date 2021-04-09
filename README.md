@@ -40,6 +40,9 @@ If you like the app, you are free to sponsor.
 
 ### Release Notes
 
+#### 1.1.1
+- Added caching to prevent multiple API Calls
+
 #### 1.1.0
 - Added new condition to specify the type of school holiday 
 
