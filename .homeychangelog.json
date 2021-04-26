@@ -16,5 +16,8 @@
   },
   "1.1.1": {
     "en": "Added caching to prevent multiple API Calls"
+  },
+  "1.1.2": {
+    "en": "Added settingspage with overview of school holidays"
   }
 }
