@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript" src="/homey.js" data-origin="settings"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+</head>
+
+<body>
+    <iframe id="iframeElement" width="100%" height="800" title="Overzicht schoolvakanties" frameborder="0" allowfullscreen></iframe>
+
+    <script type="text/javascript">
+        function onHomeyReady(Homey) {
+            const iFrame = document.getElementById('iframeElement');
+            const iframeSrc = `https://opendata.rijksoverheid.nl/v1/sources/rijksoverheid/infotypes/schoolholidays/schoolyear/${moment().get('year') - 1}-${moment().get('year')}?output=html`
+            iFrame.src = iframeSrc;
+            Homey.ready();
+        }
+    </script>
+</body>
+
+</html>
