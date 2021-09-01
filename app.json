@@ -66,22 +66,22 @@
               {
                 "id": "noord",
                 "label": {
-                  "en": "North Holland",
-                  "nl": "Noord Holland"
+                  "en": "North Region",
+                  "nl": "Regio Noord"
                 }
               },
               {
                 "id": "midden",
                 "label": {
-                  "en": "Central Netherlands",
-                  "nl": "Midden Nederland"
+                  "en": "Central Region",
+                  "nl": "Regio Midden"
                 }
               },
               {
                 "id": "zuid",
                 "label": {
-                  "en": "South Holland",
-                  "nl": "Zuid Holland"
+                  "en": "South Region",
+                  "nl": "Regio Zuid"
                 }
               }
             ]
@@ -137,22 +137,22 @@
               {
                 "id": "noord",
                 "label": {
-                  "en": "North Holland",
-                  "nl": "Noord Holland"
+                  "en": "North Region",
+                  "nl": "Regio Noord"
                 }
               },
               {
                 "id": "midden",
                 "label": {
-                  "en": "Central Netherlands",
-                  "nl": "Midden Nederland"
+                  "en": "Central Region",
+                  "nl": "Regio Midden"
                 }
               },
               {
                 "id": "zuid",
                 "label": {
-                  "en": "South Holland",
-                  "nl": "Zuid Holland"
+                  "en": "South Region",
+                  "nl": "Regio Zuid"
                 }
               }
             ]

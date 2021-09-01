@@ -5,9 +5,9 @@ Condities
 - Vandaag / Gisteren / Morgen is het [Vakantie] in [Regio]
 
 Regio's
-- Noord Holland
-- Midden Nederland
-- Zuid Holland
+- Regio Noord
+- Regio Midden 
+- Regio Zuid
 
 Vakanties
 - Herfstvakantie

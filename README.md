@@ -8,9 +8,9 @@ Check if today / yesterday / tomorrow is a school holiday in the Netherlands.
 - Today / Yesterday / Tomorrow it is [Holiday] in [Region]
 
 ## Regions
-- North Holland
-- Central Netherlands
-- South Holland
+- North Region
+- Central Region
+- South Region
 
 ## Holidays
 - Autumn break

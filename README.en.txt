@@ -5,9 +5,9 @@ Conditions
 - Today / Yesterday / Tomorrow it is [Holiday] in [Region]
 
 Regions
-- North Holland
-- Central Netherlands
-- South Holland
+- North Region
+- Central Region
+- South Region
 
 Holidays
 - Autumn break
