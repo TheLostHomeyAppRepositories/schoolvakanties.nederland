@@ -19,5 +19,8 @@
   },
   "1.1.2": {
     "en": "Added settingspage with overview of school holidays"
+  },
+  "1.1.3": {
+    "en": "Added Regions to settingspage and change labelnames."
   }
 }
