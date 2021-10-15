@@ -75,6 +75,7 @@ class SchoolHolidayApp extends Homey.App {
   }
 
   processData(regions, regionToFilter) {
+
     let holidayRegionDates = [],
       holidayDates = [];
 
@@ -98,7 +99,7 @@ class SchoolHolidayApp extends Homey.App {
 
   async fetchHolidays() {
     // Get Schoolyear
-    const schoolyear = `${moment().get('year') - 1}-${moment().get('year')}`;
+    const schoolyear = `${moment().get('year')}-${moment().get('year') + 1}`;
     // Check for changse
     if (this.isChangedSchoolYear(schoolyear)) {
       this.cachedHolidayData = [];

@@ -40,6 +40,9 @@ If you like the app, you are free to sponsor.
 
 ### Release Notes
 
+#### 1.1.4
+- Fix getting correct calendar data
+
 #### 1.1.3
 - Added Regions to settingspage and change labelnames.
 
