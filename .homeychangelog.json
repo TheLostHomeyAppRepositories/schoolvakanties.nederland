@@ -22,5 +22,8 @@
   },
   "1.1.3": {
     "en": "Added Regions to settingspage and change labelnames."
+  },
+  "1.1.4": {
+    "en": "Fix getting correct calendar data"
   }
 }
