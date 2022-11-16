@@ -236,7 +236,7 @@
     <script type="text/javascript">
         function onHomeyReady(Homey) {
             const iFrame = document.getElementById('iframeElement');
-            const iframeSrc = `https://opendata.rijksoverheid.nl/v1/sources/rijksoverheid/infotypes/schoolholidays/schoolyear/${moment().get('year') - 1}-${moment().get('year')}?output=html`
+            const iframeSrc = `https://opendata.rijksoverheid.nl/v1/sources/rijksoverheid/infotypes/schoolholidays/schoolyear/${moment().get('year')}-${moment().get('year') + 1}?output=html`
             iFrame.src = iframeSrc;
             Homey.ready();
         }
