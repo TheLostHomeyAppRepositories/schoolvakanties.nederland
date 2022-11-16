@@ -28,5 +28,8 @@
   },
   "1.1.5": {
     "en": "Fix switching current years calendar"
+  },
+  "1.1.6": {
+    "en": "Update settings page"
   }
 }
