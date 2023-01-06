@@ -233,5 +233,11 @@
       "school",
       "vakantie"
     ]
+  },
+  "api": {
+    "getHolidays": {
+      "method": "GET",
+      "path": "/holidays"
+    }
   }
 }

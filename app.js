@@ -90,7 +90,7 @@ class SchoolHolidayApp extends Homey.App {
 
   async resolveHolidayData() {
     this.cachedHolidayData = await this.fetchHolidays()
-    return this.cachedHolidayData;
+    return this.cachedHolidayData.vacations;
   }
 
   isChangedSchoolYear(schoolyear) {
@@ -99,7 +99,10 @@ class SchoolHolidayApp extends Homey.App {
 
   async fetchHolidays() {
     // Get Schoolyear
-    const schoolyear = `${moment().get('year')}-${moment().get('year') + 1}`;
+    const yearFormat = moment().get('year')
+    // After october get new year listing
+    const yearIsEnded = !moment().isBefore(`${yearFormat}-10-01`)
+    const schoolyear = yearIsEnded ? `${yearFormat}-${yearFormat + 1}` : `${yearFormat - 1}-${yearFormat}`;
     // Check for changse
     if (this.isChangedSchoolYear(schoolyear)) {
       this.cachedHolidayData = [];
@@ -114,7 +117,7 @@ class SchoolHolidayApp extends Homey.App {
     const apiEndpoint = `https://opendata.rijksoverheid.nl/v1/sources/rijksoverheid/infotypes/schoolholidays/schoolyear/${schoolyear}?output=json`,
       response = await fetch(apiEndpoint),
       data = await response.json();
-    return data.content[0].vacations;
+    return data.content[0];
   }
 }
 

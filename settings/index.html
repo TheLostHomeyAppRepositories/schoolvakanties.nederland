@@ -4,6 +4,8 @@
 <head>
     <script type="text/javascript" src="/homey.js" data-origin="settings"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/locale/nl.min.js"></script>
+    
     <style>
         html,
         body {
@@ -111,11 +113,34 @@
             margin-bottom: 0;
             padding-left: 10px;
         }
+        table {
+            width: max-content;
+        }
+        .scrollcontainer {
+            overflow: hidden;
+            overflow-x: auto;
+            margin: 0 0 2rem 0;
+        }
     </style>
 </head>
 
 <body>
-    <iframe id="iframeElement" width="100%" height="800" title="Overzicht schoolvakanties" frameborder="0" allowfullscreen></iframe>
+    <div id="dates">
+        <div class="scrollcontainer"><table>
+            <caption></caption>
+            <thead>
+             <tr>
+              <th scope="row"></th>
+              <th scope="col">Regio Noord</th>
+              <th scope="col">Regio Midden</th>
+              <th scope="col">Regio Zuid</th>
+             </tr>
+            </thead>
+            <tbody> </tbody>
+           </table>
+        </div>
+    </div>
+
     <div id="regions">
         <h1>Regio's schoolvakantie</h1>
         <div class="intro">
@@ -233,11 +258,50 @@
             </table>
         </div>
     </div>
+
     <script type="text/javascript">
+
+        moment.locale('nl');
+
+        function getData (data) {
+            const dateFormat = "ll";
+            const TABLE = document.getElementById('dates')
+            TABLE.querySelector('caption').innerHTML= data.title
+            const TBODY = TABLE.querySelector('tbody')
+            data.vacations.map(item => {
+                const TR = document.createElement("tr");
+                const TH = document.createElement("th");
+                const P = document.createElement("p")
+                P.innerHTML = item.type
+                TH.setAttribute('scope', 'row')
+                TH.append(P)
+                TR.append(TH);
+                item.regions.map(region => {
+                    const TD = document.createElement("td");
+                    const dates = `${moment(region.startdate).format(dateFormat)} t/m ${moment(region.enddate).format(dateFormat)}`;
+                    if ( item.regions.length > 1) {
+                        TD.innerHTML = dates
+                        TR.append(TD)
+                    } else {
+                        TD.innerHTML = dates
+                        TR.append(TD)     
+                        const TD2 = document.createElement("td");    
+                        TD2.innerHTML = dates              
+                        TR.append(TD2)                       
+                        const TD3 = document.createElement("td");
+                        TD3.innerHTML = dates
+                        TR.append(TD3)                       
+                    }               
+                })
+                TBODY.appendChild(TR)
+            })
+        }   
+
         function onHomeyReady(Homey) {
-            const iFrame = document.getElementById('iframeElement');
-            const iframeSrc = `https://opendata.rijksoverheid.nl/v1/sources/rijksoverheid/infotypes/schoolholidays/schoolyear/${moment().get('year')}-${moment().get('year') + 1}?output=html`
-            iFrame.src = iframeSrc;
+            Homey.api('GET', '/holidays', function (err, result) {
+                if (err) return Homey.alert('error', err);
+                getData(result)
+            });           
             Homey.ready();
         }
     </script>

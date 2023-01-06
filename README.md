@@ -40,6 +40,16 @@ If you like the app, you are free to sponsor.
 
 ### Release Notes
 
+#### 1.1.7
+- Update fix for year listings
+- Change settings page from iframe to data from API
+
+#### 1.1.6
+- Update settings page
+
+#### 1.1.5
+- Fix switching current years calendar
+
 #### 1.1.4
 - Fix getting correct calendar data
 
