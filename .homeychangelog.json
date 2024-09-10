@@ -34,5 +34,8 @@
   },
   "1.1.7": {
     "en": "Update fix for year listings"
+  },
+  "1.1.8": {
+    "en": "After latest holiday, fetch holidays for next year"
   }
 }
