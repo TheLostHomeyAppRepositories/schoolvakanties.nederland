@@ -1,0 +1,56 @@
+{
+  "id": "schoolvakanties.nederland",
+  "version": "1.1.7",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "name": {
+    "en": "School holidays",
+    "nl": "Schoolvakanties"
+  },
+  "description": {
+    "en": "School holidays to be used in your flow",
+    "nl": "Schoolvakanties te gebruiken in je flow"
+  },
+  "category": [
+    "tools"
+  ],
+  "permissions": [],
+  "brandColor": "#01689b",
+  "images": {
+    "large": "/assets/images/large.png",
+    "small": "/assets/images/small.png"
+  },
+  "homepage": "https://github.com/elmarkou/homey.schoolvakanties.nederland",
+  "source": "https://github.com/elmarkou/homey.schoolvakanties.nederland",
+  "bugs": {
+    "url": "https://github.com/elmarkou/homey.schoolvakanties.nederland/issues"
+  },
+  "support": "mailto:elmarkou@gmail.com",
+  "author": {
+    "name": "Elmar Kouwenhoven",
+    "email": "elmarkou@gmail.com"
+  },
+  "contributing": {
+    "donate": {
+      "paypal": {
+        "username": "elmarkouwenhoven"
+      }
+    }
+  },
+  "tags": {
+    "en": [
+      "school",
+      "holiday"
+    ],
+    "nl": [
+      "school",
+      "vakantie"
+    ]
+  },
+  "api": {
+    "getHolidays": {
+      "method": "GET",
+      "path": "/holidays"
+    }
+  }
+}

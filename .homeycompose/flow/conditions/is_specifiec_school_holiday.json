@@ -1,0 +1,112 @@
+{
+  "id": "is_specifiec_school_holiday",
+  "title": {
+    "en": "It is a specific school holiday",
+    "nl": "Het is een specifieke schoolvakantie"
+  },
+  "titleFormatted": {
+    "en": "[[day]] it !{{is|isn't}} [[holiday]] in [[regio]]",
+    "nl": "[[day]] is het !{{|geen}} [[holiday]] in [[regio]]"
+  },
+  "hint": {
+    "en": "This flow will continue when there is/isn't a specific school holiday",
+    "nl": "De flow zal doorgaan als het wel/geen specifieke schoolvakantie is"
+  },
+  "args": [
+    {
+      "name": "day",
+      "type": "dropdown",
+      "values": [
+        {
+          "id": "today",
+          "label": {
+            "en": "Today",
+            "nl": "Vandaag"
+          }
+        },
+        {
+          "id": "tomorrow",
+          "label": {
+            "en": "Tomorrow",
+            "nl": "Morgen"
+          }
+        },
+        {
+          "id": "yesterday",
+          "label": {
+            "en": "Yesterday",
+            "nl": "Gisteren"
+          }
+        }
+      ]
+    },
+    {
+      "name": "regio",
+      "type": "dropdown",
+      "values": [
+        {
+          "id": "noord",
+          "label": {
+            "en": "North Region",
+            "nl": "Regio Noord"
+          }
+        },
+        {
+          "id": "midden",
+          "label": {
+            "en": "Central Region",
+            "nl": "Regio Midden"
+          }
+        },
+        {
+          "id": "zuid",
+          "label": {
+            "en": "South Region",
+            "nl": "Regio Zuid"
+          }
+        }
+      ]
+    },
+    {
+      "name": "holiday",
+      "type": "dropdown",
+      "values": [
+        {
+          "id": "herfstvakantie",
+          "label": {
+            "en": "Autumn break",
+            "nl": "Herfstvakantie"
+          }
+        },
+        {
+          "id": "kerstvakantie",
+          "label": {
+            "en": "Christmas break",
+            "nl": "Kerstvakantie"
+          }
+        },
+        {
+          "id": "voorjaarsvakantie",
+          "label": {
+            "en": "Spring break",
+            "nl": "Voorjaarsvakantie"
+          }
+        },
+        {
+          "id": "meivakantie",
+          "label": {
+            "en": "May holidays",
+            "nl": "Meivakantie"
+          }
+        },
+        {
+          "id": "zomervakantie",
+          "label": {
+            "en": "Summer holiday",
+            "nl": "Zomervakantie"
+          }
+        }
+      ]
+    }
+  ]
+}
