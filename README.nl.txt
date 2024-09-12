@@ -1,26 +1,14 @@
-Controleer of het gisteren/vandaag/morgen schoolvakantie is of niet in Nederland
+Schoolvakanties Nederland – Check eenvoudig of het vakantie is!
 
-Condities
-- Vandaag / Gisteren / Morgen is het schoolvakantie in [Regio]
-- Vandaag / Gisteren / Morgen is het [Vakantie] in [Regio]
+Wil je weten of het vandaag, gisteren of morgen schoolvakantie is in Nederland? Met deze Homey app kun je eenvoudig controleren of er vakantie is in jouw regio en welke vakantie dat precies is.
 
-Regio's
-- Regio Noord
-- Regio Midden 
-- Regio Zuid
+Wat kun je hier doen?
 
-Vakanties
-- Herfstvakantie
-- Kerstvakantie
-- Voorjaarsvakantie
-- Meivakantie
-- Zomervakantie
+- Bekijk of het vandaag, gisteren of morgen schoolvakantie is in Regio Noord, Regio Midden, of Regio Zuid.
+- Krijg details over specifieke vakanties zoals Herfstvakantie, Kerstvakantie, Voorjaarsvakantie, Meivakantie, en Zomervakantie.
+- Beheer je eigen vakanties: voeg aangepaste vakanties toe of verwijder bestaande vakanties die voor jou niet relevant zijn.
+- Bekijk een volledig overzicht van alle schoolvakanties per regio in Nederland.
 
-Tokens
-- Schoolvakantie gisteren
-- Schoolvakantie vandaag
-- Schoolvakantie morgen
-
-Voorbeeld
-- ALS de wekker af gaat, EN het is geen school vakantie, DAN speel ochtend muziek 
-- ALS deze flow start, EN het is Kerstvakantie, DAN speel kerst muziek
+Voorbeeldgebruik:
+- Automatisering: Stel dat je wekker 's ochtends afgaat. Als het geen schoolvakantie is, laat de wekker ochtendmuziek spelen. Is het Kerstvakantie? Dan kun je kiezen voor sfeervolle kerstnummers.
+Met deze tool heb je altijd snel inzicht in de schoolvakanties, zodat je je planning gemakkelijk kunt aanpassen!

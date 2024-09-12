@@ -1,6 +1,6 @@
 # Schoolvakanties
 
-Check if today / yesterday / tomorrow is a school holiday in the Netherlands.
+Check if today / yesterday / tomorrow is a (school) holiday in the Netherlands.
 
 ![image][storebackdrop]
 
@@ -8,6 +8,7 @@ Check if today / yesterday / tomorrow is a school holiday in the Netherlands.
 
 - Today / Yesterday / Tomorrow it is school holiday in [Region]
 - Today / Yesterday / Tomorrow it is [Holiday] in [Region]
+- Today / Yesterday / Tomorrow it is [CustomHoliday]
 
 ## Regions
 
@@ -22,6 +23,11 @@ Check if today / yesterday / tomorrow is a school holiday in the Netherlands.
 - Spring break
 - May holidays
 - Summer holidays
+
+## Settings
+
+- Gives an overview of all holidays per region in the Netherlands.
+- You can manage your own holidays. You can add or delete custom holidays.
 
 ## Tokens
 
@@ -48,6 +54,10 @@ If you like the app, you are free to sponsor.
 [![Paypal donate][pp-donate-image]][pp-donate-link]
 
 ### Release Notes
+
+#### 2.0.0
+
+- You are now able to manage your own custom holidays via settings.
 
 #### 1.1.8
 

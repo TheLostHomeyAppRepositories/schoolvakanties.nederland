@@ -1,310 +1,410 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <script type="text/javascript" src="/homey.js" data-origin="settings"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/locale/nl.min.js"></script>
-    
-    <style>
-        html,
-        body {
-            font-size: 12px;
-        }
-
-        body,
-        h1,
-        h2,
-        table,
-        tr,
-        th,
-        td,
-        form,
-        div,
-        textarea {
-            margin: 0;
-            border: 0;
-            padding: 0;
-            list-style: none;
-            font-family: Verdana, Geneva, sans-serif;
-            font-size: 1em;
-            font-weight: normal;
-            line-height: 1.8;
-            text-align: left;
-            vertical-align: top;
-        }
-
-        h1 {
-            font-size: 2em;
-            padding-left: 10px;
-            margin: 2em 0 0.2em;
-        }
-
-        caption,
-        tfoot td {
-            padding-left: 10px;
-            margin: 1em 0;
-            color: #767676;
-            line-height: 1.5;
-            text-align: left;
-            background: none;
-        }
-
-        h2 {
-            margin: 2em 0 0.2em;
-            padding-left: 10px;
-            font-weight: bold;
-            font-size: 1.2em;
-        }
-
-        table {
-            width: auto;
-            margin: 0;
-            border-collapse: collapse;
-        }
-
-        td,
-        th {
-            padding: 0.6em 10px 0.6em 10px;
-            line-height: 1.5;
-            border-collapse: collapse;
-            vertical-align: top;
-            border-right: 2px solid white;
-            border-bottom: 2px solid white;
-            background-color: #e6e6e6;
-        }
-
-        th {
-            background-color: #cccccc;
-            font-weight: bold;
-        }
-
-        .col-wide {
-            width: 40%;
-        }
-
-        td:first-child,
-        th:first-child {
-            border-left: none;
-        }
-
-        textarea {
-            border: 1px solid #e6e6e6;
-        }
-
-        a {
-            color: #154273;
-        }
-
-        a:visited {
-            color: #767676;
-        }
-
-        a:focus,
-        a:hover {
-            color: #0162CD;
-        }
-
-        td p {
-            padding-left: 0;
-        }
-
-        p {
-            margin-bottom: 0;
-            padding-left: 10px;
-        }
-        table {
-            width: max-content;
-        }
-        .scrollcontainer {
-            overflow: hidden;
-            overflow-x: auto;
-            margin: 0 0 2rem 0;
-        }
-    </style>
-</head>
-
-<body>
-    <div id="dates">
-        <div class="scrollcontainer"><table>
-            <caption></caption>
-            <thead>
-             <tr>
-              <th scope="row"></th>
-              <th scope="col">Regio Noord</th>
-              <th scope="col">Regio Midden</th>
-              <th scope="col">Regio Zuid</th>
-             </tr>
-            </thead>
-            <tbody> </tbody>
-           </table>
+    <head>
+        <script type="text/javascript" src="/homey.js"
+            data-origin="settings"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/locale/nl.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+    </head>
+    <body>
+        <h1 class="homey-form-legend" data-i18n="settings.title"></h1>
+        <h3 data-i18n="settings.subtitle"></h3>
+        <div id="custom_dates">
+            <form id="dateForm" class="homey-form">
+                <fieldset class="homey-form-fieldset">
+                    <div class="homey-form-group">
+                        <label class="homey-form-label"
+                            for="customLabel">Label:</label>
+                        <input type="text" id="customLabel" name="customLabel"
+                            class="homey-form-input" required>
+                    </div>
+                    <div class="input-container">
+                        <div class="homey-form-group">
+                            <label class="homey-form-label"
+                                for="startDate"
+                                data-i18n="settings.startDate"></label>
+                            <input type="date" id="startDate" name="startDate"
+                                class="homey-form-input" required>
+                        </div>
+                        <div class="homey-form-group">
+                            <label class="homey-form-label" for="endDate"
+                                data-i18n="settings.endDate"></label>
+                            <input type="date" id="endDate" name="endDate"
+                                class="homey-form-input" required>
+                        </div>
+                    </div>
+                    <div class="button-container">
+                        <button type="submit" id="saveCustomDate"
+                            class="homey-button-primary-full"
+                            data-i18n="settings.add"></button>
+                    </div>
+                </fieldset>
+            </form>
         </div>
-    </div>
-
-    <div id="regions">
-        <h1>Regio's schoolvakantie</h1>
-        <div class="intro">
-            <p>Om de schoolvakanties te spreiden heeft Nederland 3 regio’s. Dit zijn de regio’s Noord, Midden en Zuid. De vakantiespreiding&nbsp;vermindert de vakantiedrukte in de schoolvakanties.</p>
+        <div id="custom-dates"></div>
+        <hr />
+        <div id="dates">
+            <h1></h1>
+            <h3></h3>
+            <div class="scrollcontainer">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="row"></th>
+                            <th scope="col"
+                                data-i18n="settings.region.north"></th>
+                            <th scope="col "
+                                data-i18n="settings.region.middle"></th>
+                            <th scope="col"
+                                data-i18n="settings.region.south"></th>
+                        </tr>
+                    </thead>
+                    <tbody> </tbody>
+                </table>
+            </div>
         </div>
-        <p>Hieronder vindt u een overzicht van de regio’s. Per regio ziet u welke provincies en gemeenten tot de regio behoren.</p>
-        <h2>Regio Noord</h2>
-        <div class="scrollcontainer">
-            <table>
-                <caption>Indeling schoolvakanties regio Noord</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Provincie</th>
-                        <th scope="col">Gemeenten</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Drenthe&nbsp;</td>
-                        <td>Alle gemeenten</td>
-                    </tr>
-                    <tr>
-                        <td>Flevoland</td>
-                        <td>Alle gemeenten&nbsp;behalve&nbsp;Zeewolde</td>
-                    </tr>
-                    <tr>
-                        <td>Friesland</td>
-                        <td>Alle gemeenten</td>
-                    </tr>
-                    <tr>
-                        <td>Gelderland</td>
-                        <td>Hattem</td>
-                    </tr>
-                    <tr>
-                        <td>Groningen</td>
-                        <td>Alle gemeenten</td>
-                    </tr>
-                    <tr>
-                        <td>Noord-Holland</td>
-                        <td>Alle gemeenten</td>
-                    </tr>
-                    <tr>
-                        <td>Overijssel</td>
-                        <td>Alle gemeenten</td>
-                    </tr>
-                    <tr>
-                        <td>Utrecht</td>
-                        <td>Eemnes en de voormalige gemeente&nbsp;Abcoude</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <h2>Regio Midden</h2>
-        <div class="scrollcontainer">
-            <table>
-                <caption>Indeling schoolvakanties regio Midden</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Provincie</th>
-                        <th scope="col">Gemeenten</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Flevoland</td>
-                        <td>Zeewolde</td>
-                    </tr>
-                    <tr>
-                        <td>Gelderland</td>
-                        <td>Aalten, Apeldoorn, Barneveld, Berkelland, Bronckhorst, Brummen, Buren, Culemborg, Doetinchem, Ede, Elburg, Epe, Ermelo, Harderwijk, Heerde, Lochem,&nbsp; Montferland (behalve de voormalige gemeente&nbsp; Didam), Neder-Betuwe&nbsp; (behalve de voormalige gemeente&nbsp; Dodewaard), Nijkerk, Nunspeet, Oldebroek, Oost-Gelre, Oude IJsselstreek, Putten, Scherpenzeel, Tiel, Voorst, Wageningen, West Betuwe, Winterswijk en Zutphen</td>
-                    </tr>
-                    <tr>
-                        <td>Noord-Brabant</td>
-                        <td>Altena (behalve de kernen Hank en Dussen)</td>
-                    </tr>
-                    <tr>
-                        <td>Utrecht</td>
-                        <td>Alle gemeenten behalve Eemnes en de voormalige gemeente Abcoude</td>
-                    </tr>
-                    <tr>
-                        <td>Zuid-Holland</td>
-                        <td>Alle gemeenten</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <h2>Regio Zuid</h2>
-        <div class="scrollcontainer">
-            <table>
-                <caption>Indeling schoolvakanties regio Zuid</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Provincie</th>
-                        <th scope="col">Gemeenten</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Gelderland</td>
-                        <td>Arnhem, Beuningen, Doesburg, Druten, Duiven, Groesbeek, Heumen, Neder-Betuwe (alleen de voormalige gemeente Dodewaard), Lingewaard, Maasdriel, Millingen a/d Rijn, Montferland (alleen de voormalige gemeente Didam), Nijmegen, Overbetuwe, Renkum, Rheden, Rozendaal, Rijnwaarden, Ubbergen, Westervoort, West Maas en Waal, Wijchen,Zaltbommel en Zevenaar.</td>
-                    </tr>
-                    <tr>
-                        <td>Limburg</td>
-                        <td>Alle gemeenten</td>
-                    </tr>
-                    <tr>
-                        <td>Noord-Brabant</td>
-                        <td>Alle gemeenten behalve Woudrichem en de kernen Sleeuwijk, Nieuwendijk en Werkendam in de gemeente Altena</td>
-                    </tr>
-                    <tr>
-                        <td>Zeeland</td>
-                        <td>Alle gemeenten</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <script type="text/javascript">
-
-        moment.locale('nl');
-
-        function getData (data) {
-            const dateFormat = "ll";
-            const TABLE = document.getElementById('dates')
-            TABLE.querySelector('caption').innerHTML= data.title
-            const TBODY = TABLE.querySelector('tbody')
-            data.vacations.map(item => {
-                const TR = document.createElement("tr");
-                const TH = document.createElement("th");
-                const P = document.createElement("p")
-                P.innerHTML = item.type
-                TH.setAttribute('scope', 'row')
-                TH.append(P)
-                TR.append(TH);
-                item.regions.map(region => {
-                    const TD = document.createElement("td");
-                    const dates = `${moment(region.startdate).format(dateFormat)} t/m ${moment(region.enddate).format(dateFormat)}`;
-                    if ( item.regions.length > 1) {
-                        TD.innerHTML = dates
-                        TR.append(TD)
+        <hr />
+        <div id="regions">
+            <h1 data-i18n="settings.regions.title"></h1>
+            <div class="intro">
+                <p data-i18n="settings.regions.intro"></p>
+            </div>
+            <p data-i18n="settings.regions.intro2"></p>
+            <h2 data-i18n="settings.regions.north.title"></h2>
+            <h3 data-i18n="settings.regions.north.subtitle"></h3>
+            <div class="scrollcontainer">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col"
+                                data-i18n="settings.regions.province"></th>
+                            <th scope="col"
+                                data-i18n="settings.regions.municipality"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Drenthe&nbsp;</td>
+                            <td
+                                data-i18n="settings.regions.all_municipalities"></td>
+                        </tr>
+                        <tr>
+                            <td>Flevoland</td>
+                            <td><span
+                                    data-i18n="settings.regions.all_municipalities"></span>&nbsp;<span
+                                    data-i18n="settings.regions.except"></span>&nbsp;Zeewolde</td>
+                        </tr>
+                        <tr>
+                            <td>Friesland</td>
+                            <td
+                                data-i18n="settings.regions.all_municipalities"></td>
+                        </tr>
+                        <tr>
+                            <td>Gelderland</td>
+                            <td>Hattem</td>
+                        </tr>
+                        <tr>
+                            <td>Groningen</td>
+                            <td
+                                data-i18n="settings.regions.all_municipalities"></td>
+                        </tr>
+                        <tr>
+                            <td>Noord-Holland</td>
+                            <td
+                                data-i18n="settings.regions.all_municipalities"></td>
+                        </tr>
+                        <tr>
+                            <td>Overijssel</td>
+                            <td
+                                data-i18n="settings.regions.all_municipalities"></td>
+                        </tr>
+                        <tr>
+                            <td>Utrecht</td>
+                            <td>Eemnes en de voormalige
+                                gemeente&nbsp;Abcoude
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h2 data-i18n="settings.regions.middle.title"></h2>
+            <div class="scrollcontainer">
+                <h3 data-i18n="settings.regions.middle.subtitle"></h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col"
+                                data-i18n="settings.regions.province"></th>
+                            <th scope="col"
+                                data-i18n="settings.regions.municipality"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Flevoland</td>
+                            <td>Zeewolde</td>
+                        </tr>
+                        <tr>
+                            <td>Gelderland</td>
+                            <td>Aalten, Apeldoorn, Barneveld, Berkelland,
+                                Bronckhorst, Brummen, Buren, Culemborg,
+                                Doetinchem, Ede, Elburg, Epe, Ermelo,
+                                Harderwijk, Heerde, Lochem,&nbsp; Montferland
+                                (behalve de voormalige gemeente&nbsp; Didam),
+                                Neder-Betuwe&nbsp; (behalve de voormalige
+                                gemeente&nbsp; Dodewaard), Nijkerk, Nunspeet,
+                                Oldebroek, Oost-Gelre, Oude IJsselstreek,
+                                Putten, Scherpenzeel, Tiel, Voorst, Wageningen,
+                                West Betuwe, Winterswijk en Zutphen
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Noord-Brabant</td>
+                            <td>Altena (<span
+                                    data-i18n="settings.regions.except"></span>
+                                de kernen Hank en Dussen)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Utrecht</td>
+                            <td><span
+                                    data-i18n="settings.regions.all_municipalities"></span>
+                                <span
+                                    data-i18n="settings.regions.except"></span>
+                                Eemnes en de voormalige
+                                gemeente Abcoude
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Zuid-Holland</td>
+                            <td
+                                data-i18n="settings.regions.all_municipalities"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h2 data-i18n="settings.regions.south.title"></h2>
+            <h3 data-i18n="settings.regions.south.subtitle"></h3>
+            <div class="scrollcontainer">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col"
+                                data-i18n="settings.regions.province"></th>
+                            <th scope="col"
+                                data-i18n="settings.regions.municipality"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Gelderland</td>
+                            <td>Arnhem, Beuningen, Doesburg, Druten, Duiven,
+                                Groesbeek, Heumen, Neder-Betuwe (alleen de
+                                voormalige gemeente Dodewaard), Lingewaard,
+                                Maasdriel, Millingen a/d Rijn, Montferland
+                                (alleen de voormalige gemeente Didam),
+                                Nijmegen,
+                                Overbetuwe, Renkum, Rheden, Rozendaal,
+                                Rijnwaarden, Ubbergen, Westervoort, West
+                                Maas en
+                                Waal, Wijchen,Zaltbommel en Zevenaar.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Limburg</td>
+                            <td
+                                data-i18n="settings.regions.all_municipalities"></td>
+                        </tr>
+                        <tr>
+                            <td>Noord-Brabant</td>
+                            <td><span
+                                    data-i18n="settings.regions.all_municipalities">
+                                    <span
+                                        data-i18n="settings.regions.except"></span>
+                                    Woudrichem en de
+                                    kernen
+                                    Sleeuwijk, Nieuwendijk en Werkendam in
+                                    de
+                                    gemeente Altena
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Zeeland</td>
+                                <td
+                                    data-i18n="settings.regions.all_municipalities"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <script type="text/javascript">
+                // Set locale for Moment.js
+                moment.locale('nl');
+            
+                const CUSTOM_DATES_KEY = 'customDates';
+            
+                // Render school vacation data
+                function renderSchoolVacations(data) {
+                    const dateFormat = "ll";
+                    const table = document.getElementById('dates');
+                    const tbody = table.querySelector('tbody');
+            
+                    // Set table headers
+                    table.querySelector('h1').textContent = `Schoolvakantie ${data.schoolyear}`;
+                    table.querySelector('h3').textContent = data.title;
+            
+                    // Clear previous table rows
+                    tbody.innerHTML = '';
+            
+                    // Create rows for each vacation
+                    data.vacations.forEach(vacation => {
+                        const tr = document.createElement("tr");
+                        const th = document.createElement("th");
+                        th.setAttribute('scope', 'row');
+                        th.innerHTML = `<p>${vacation.type}</p>`;
+                        tr.append(th);
+            
+                        // Handle region dates
+                        const dates = vacation.regions.map(region => 
+                            moment(region.startdate).format(dateFormat) + " t/m " + moment(region.enddate).format(dateFormat)
+                        );
+            
+                        // If multiple regions, create a cell for each region
+                        if (dates.length > 1) {
+                            dates.forEach(date => {
+                                const td = document.createElement("td");
+                                td.textContent = date;
+                                tr.append(td);
+                            });
+                        } else {
+                            // If only one region, replicate date across 3 cells
+                            for (let i = 0; i < 3; i++) {
+                                const td = document.createElement("td");
+                                td.textContent = dates[0];
+                                tr.append(td);
+                            }
+                        }
+            
+                        tbody.appendChild(tr);
+                    });
+            
+                    // Load custom dates if available
+                    Homey.get(CUSTOM_DATES_KEY, (err, customDates) => {
+                        if (err) return Homey.alert(err);
+                        if (customDates) renderCustomDatesTable(customDates, Homey);
+                    });
+                }
+            
+                // Delete custom date and update the table
+                function deleteCustomDate(id, customDatesArray, Homey) {
+                    const updatedDates = customDatesArray.filter(date => date.id !== id);
+                    Homey.set(CUSTOM_DATES_KEY, updatedDates, err => {
+                        if (err) return Homey.alert('Error deleting custom date: ' + err);
+                        renderCustomDatesTable(updatedDates, Homey);
+                    });
+                }
+            
+                // Render custom dates table
+                function renderCustomDatesTable(customDatesArray, Homey) {
+                    const tableContainer = document.getElementById('custom-dates');
+                    let tableHTML = `
+                        <div class="scrollcontainer">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Label</th>
+                                        <th>${Homey.__('settings.startDate')}</th>
+                                        <th>${Homey.__('settings.endDate')}</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                    `;
+            
+                    // Handle case when no custom dates are available
+                    if (customDatesArray.length === 0) {
+                        tableHTML += `<tr><td colspan="4">${Homey.__('settings.no_holidays')}</td></tr>`;
                     } else {
-                        TD.innerHTML = dates
-                        TR.append(TD)     
-                        const TD2 = document.createElement("td");    
-                        TD2.innerHTML = dates              
-                        TR.append(TD2)                       
-                        const TD3 = document.createElement("td");
-                        TD3.innerHTML = dates
-                        TR.append(TD3)                       
-                    }               
-                })
-                TBODY.appendChild(TR)
-            })
-        }   
+                        customDatesArray.forEach(date => {
+                            tableHTML += `
+                                <tr>
+                                    <td>${date.label}</td>
+                                    <td>${moment(date.startDate).format('ll')}</td>
+                                    <td>${moment(date.endDate).format('ll')}</td>
+                                    <td>
+                                        <button class="delete-btn homey-button-danger-shadow homey-button-small" data-id="${date.id}">
+                                            ${Homey.__('settings.remove')}
+                                        </button>
+                                    </td>
+                                </tr>
+                            `;
+                        });
+                    }
+            
+                    tableHTML += '</tbody></table></div>';
+                    tableContainer.innerHTML = tableHTML;
+            
+                    // Attach event listeners to delete buttons
+                    document.querySelectorAll('.delete-btn').forEach(button => {
+                        button.addEventListener("click", function () {
+                            const id = parseInt(this.getAttribute('data-id'));
+                            deleteCustomDate(id, customDatesArray, Homey);
+                        });
+                    });
+                }
+            
+                // Initialize Homey API and set up form functionality
+                function onHomeyReady(Homey) {
+                    // Fetch holidays data from Homey API
+                    Homey.api('GET', '/holidays', (err, result) => {
+                        if (err) return Homey.alert('Error fetching holidays', err);
+                        renderSchoolVacations(result);
+                    });
+            
+                    Homey.ready();
+            
+                    // Set up form elements for custom dates
+                    const startDateElement = document.getElementById("startDate");
+                    const endDateElement = document.getElementById("endDate");
+                    const customLabelElement = document.getElementById("customLabel");
+                    const saveElement = document.getElementById("saveCustomDate");
+            
+                    let customDatesArray = [];
+            
+                    // Load custom dates from storage
+                    Homey.get(CUSTOM_DATES_KEY, (err, customDates) => {
+                        if (err) return Homey.alert(err);
+                        if (customDates) customDatesArray = customDates;
+                    });
+            
+                    // Ensure end date is always after start date
+                    startDateElement.addEventListener("change", (e) => {
+                        endDateElement.setAttribute('min', e.target.value);
+                    });
+            
+                    // Save custom date
+                    saveElement.addEventListener("click", () => {
+                        if (!customLabelElement.value || !startDateElement.value || !endDateElement.value) return;
+            
+                        if (document.getElementById("dateForm").checkValidity()) {
+                            customDatesArray.push({
+                                id: Date.now(),
+                                label: customLabelElement.value,
+                                startDate: startDateElement.value,
+                                endDate: endDateElement.value
+                            });
+            
+                            Homey.set(CUSTOM_DATES_KEY, customDatesArray, err => {
+                                if (err) return Homey.alert('Error saving custom date', err);
+                                renderCustomDatesTable(customDatesArray, Homey);
+                            });
+                        }
+                    });
+                }
+            </script>
 
-        function onHomeyReady(Homey) {
-            Homey.api('GET', '/holidays', function (err, result) {
-                if (err) return Homey.alert('error', err);
-                getData(result)
-            });           
-            Homey.ready();
-        }
-    </script>
-</body>
-
-</html>
+        </body>
+    </html>

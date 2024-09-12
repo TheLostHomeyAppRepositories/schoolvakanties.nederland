@@ -1,5 +1,5 @@
 {
-  "id": "is_specifiec_school_holiday",
+  "id": "is_specific_school_holiday",
   "title": {
     "en": "It is a specific school holiday",
     "nl": "Het is een specifieke schoolvakantie"
@@ -16,6 +16,14 @@
     {
       "name": "day",
       "type": "dropdown",
+      "title": {
+        "en": "Day",
+        "nl": "Dag"
+      },
+      "placeholder": {
+        "en": "Select a day",
+        "nl": "Selecteer een dag"
+      },
       "values": [
         {
           "id": "today",
@@ -43,6 +51,14 @@
     {
       "name": "regio",
       "type": "dropdown",
+      "title": {
+        "en": "Region",
+        "nl": "Regio"
+      },
+      "placeholder": {
+        "en": "Select a region",
+        "nl": "Selecteer een regio"
+      },
       "values": [
         {
           "id": "noord",
@@ -70,6 +86,14 @@
     {
       "name": "holiday",
       "type": "dropdown",
+      "title": {
+        "en": "Holiday",
+        "nl": "Vakantie"
+      },
+      "placeholder": {
+        "en": "Select a holiday",
+        "nl": "Selecteer een vakantie"
+      },
       "values": [
         {
           "id": "herfstvakantie",

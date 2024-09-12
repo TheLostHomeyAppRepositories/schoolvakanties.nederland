@@ -15,7 +15,15 @@
   "args": [
     {
       "name": "day",
+      "title": {
+        "en": "Day",
+        "nl": "Dag"
+      },
       "type": "dropdown",
+      "placeholder": {
+        "en": "Select a day",
+        "nl": "Selecteer een dag"
+      },
       "values": [
         {
           "id": "today",
@@ -43,6 +51,14 @@
     {
       "name": "regio",
       "type": "dropdown",
+      "title": {
+        "en": "Region",
+        "nl": "Regio"
+      },
+      "placeholder": {
+        "en": "Select a region",
+        "nl": "Selecteer een regio"
+      },
       "values": [
         {
           "id": "noord",

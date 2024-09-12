@@ -4,15 +4,18 @@ const Homey = require("homey");
 const fetch = require("node-fetch");
 const Moment = require("moment");
 const MomentRange = require("moment-range");
-const moment = MomentRange.extendMoment(Moment); // Add plugin to moment instance
+const moment = MomentRange.extendMoment(Moment); // Extend moment with moment-range
 
+const CUSTOM_DATES_KEY = "customDates";
 const DATE_FORMAT = "YYYY-MM-DD";
+const DATE_PRETTY_FORMAT = "LL";
 const API_ENDPOINT =
   "https://opendata.rijksoverheid.nl/v1/sources/rijksoverheid/infotypes/schoolholidays/schoolyear/";
 
 class SchoolHolidayApp extends Homey.App {
   async onInit() {
-    this.log("Schoolvakanties Nederland has been initialized");
+    this.log("School Holidays Netherlands initialized");
+    moment.locale(this.homey.i18n.getLanguage());
 
     this.schoolyear = null;
     this.cachedHolidayData = [];
@@ -24,15 +27,15 @@ class SchoolHolidayApp extends Homey.App {
   async initializeTokens() {
     this.tokenYesterday = await this.createToken(
       "SchoolHolidayYesterday",
-      "tokens.yesterday"
+      "tokens.yesterday",
     );
     this.tokenToday = await this.createToken(
       "SchoolHolidayToday",
-      "tokens.today"
+      "tokens.today",
     );
     this.tokenTomorrow = await this.createToken(
       "SchoolHolidayTomorrow",
-      "tokens.tomorrow"
+      "tokens.tomorrow",
     );
   }
 
@@ -43,40 +46,62 @@ class SchoolHolidayApp extends Homey.App {
     });
   }
 
-  // Register flow cards for checking school holidays
   registerFlowCards() {
-    const isSchoolHolidayCondition =
-      this.homey.flow.getConditionCard("is_school_holiday");
-    const isSpecificSchoolHolidayCondition = this.homey.flow.getConditionCard(
-      "is_specifiec_school_holiday"
-    );
+    const flowCards = [
+      { name: "is_school_holiday", handler: this.handleSchoolHolidayCondition },
+      {
+        name: "is_specific_school_holiday",
+        handler: this.handleSpecificSchoolHolidayCondition,
+      },
+      { name: "is_custom_holiday", handler: this.handleCustomHolidayCondition },
+    ];
 
-    isSchoolHolidayCondition.registerRunListener(
-      this.handleSchoolHolidayCondition.bind(this)
-    );
-    isSpecificSchoolHolidayCondition.registerRunListener(
-      this.handleSpecificSchoolHolidayCondition.bind(this)
-    );
+    flowCards.forEach((card) => {
+      const flowCard = this.homey.flow.getConditionCard(card.name);
+      flowCard.registerRunListener(card.handler.bind(this));
+
+      if (card.name === "is_custom_holiday") {
+        flowCard.registerArgumentAutocompleteListener(
+          "holiday",
+          this.autocompleteHolidays.bind(this),
+        );
+      }
+    });
   }
 
-  // Handle the generic school holiday condition
-  async handleSchoolHolidayCondition(args) {
+  async autocompleteHolidays(query) {
+    const customDates = this.homey.settings.get(CUSTOM_DATES_KEY) || [];
+    return customDates
+      .filter(({ label }) => label.toLowerCase().includes(query.toLowerCase()))
+      .map(({ id, label, startDate, endDate }) => ({
+        name: label,
+        description: `${moment(startDate).format(DATE_PRETTY_FORMAT)} - ${moment(endDate).format(DATE_PRETTY_FORMAT)}`,
+        id: id,
+        startDate: moment(startDate),
+        endDate: moment(endDate),
+      }));
+  }
+
+  async handleSchoolHolidayCondition({ day, regio }) {
     const regions = await this.resolveHolidayData();
-    const holidayDates = this.processData(regions, args.regio);
-    return this.isSchoolHoliday(args.day, holidayDates);
+    const holidayDates = this.processRegionData(regions, regio);
+    return this.isSchoolHoliday(day, holidayDates);
   }
 
-  // Handle the specific school holiday condition
-  async handleSpecificSchoolHolidayCondition(args) {
-    let regions = await this.resolveHolidayData();
-    regions = regions.filter(
-      (vacation) => vacation.type.trim().toLowerCase() === args.holiday
+  async handleSpecificSchoolHolidayCondition({ regio, holiday, day }) {
+    const regions = await this.resolveHolidayData();
+    const filteredRegions = regions.filter(
+      ({ type }) => type.trim().toLowerCase() === holiday.toLowerCase(),
     );
-    const holidayDates = this.processData(regions, args.regio);
-    return this.isSchoolHoliday(args.day, holidayDates);
+    const holidayDates = this.processRegionData(filteredRegions, regio);
+    return this.isSchoolHoliday(day, holidayDates);
   }
 
-  // Check if the given day is a school holiday
+  async handleCustomHolidayCondition({ day, holiday }) {
+    const holidayDates = this.processData([holiday]);
+    return this.isSchoolHoliday(day, holidayDates);
+  }
+
   async isSchoolHoliday(day, dates) {
     const today = moment().format(DATE_FORMAT);
     const days = {
@@ -85,104 +110,100 @@ class SchoolHolidayApp extends Homey.App {
       tomorrow: moment().add(1, "days").format(DATE_FORMAT),
     };
 
-    // Set values for yesterday, today, and tomorrow in tokens
     await Promise.all([
       this.tokenYesterday.setValue(dates.includes(days.yesterday)),
       this.tokenToday.setValue(dates.includes(days.today)),
       this.tokenTomorrow.setValue(dates.includes(days.tomorrow)),
     ]);
 
-    return dates.includes(days[day]); // Return true if the day is a holiday
+    return dates.includes(days[day]);
   }
 
-  // Create an array of dates between the start and end date
   createRangeDates(startDate, endDate) {
-    const range = moment.range(startDate, endDate); // Create date range using moment-range
-    return Array.from(range.by("days")).map((m) => m.format(DATE_FORMAT)); // Map to formatted date strings
+    return Array.from(moment.range(startDate, endDate).by("days")).map((m) =>
+      m.format(DATE_FORMAT),
+    );
   }
 
-  // Process the fetched data and return an array of dates for the given region
-  processData(regions, regionToFilter) {
+  processRegionData(regions, regionToFilter) {
     return regions
-      .map((vacation) =>
-        vacation.regions.find(
+      .map(({ regions }) =>
+        regions.find(
           (region) =>
             region.region === regionToFilter ||
-            region.region === "heel Nederland"
-        )
+            region.region === "heel Nederland",
+        ),
       )
-      .filter(Boolean) // Filter out null or undefined values
-      .flatMap((region) =>
-        this.createRangeDates(region.startdate, region.enddate)
-      ); // Create a flat array of dates
+      .filter(Boolean)
+      .flatMap(({ startdate, enddate }) =>
+        this.createRangeDates(startdate, enddate),
+      );
   }
 
-  // Fetch and cache the school holiday data if not already cached
+  processData(datesArray) {
+    return datesArray.flatMap(({ startDate, endDate }) =>
+      this.createRangeDates(startDate, endDate),
+    );
+  }
+
   async resolveHolidayData() {
-    if (this.cachedHolidayData.length === 0) {
+    if (!this.cachedHolidayData.length) {
       this.cachedHolidayData = await this.fetchHolidays();
     }
     return this.cachedHolidayData.vacations;
   }
 
-  // Get the latest end date from the fetched data
   getLatestEndDate(data) {
     const allEndDates = data.content.flatMap((item) =>
-      item.vacations.flatMap((vacation) =>
-        vacation.regions.map((region) => new Date(region.enddate))
-      )
+      item.vacations.flatMap(({ regions }) =>
+        regions.map(({ enddate }) => new Date(enddate)),
+      ),
     );
-    return new Date(Math.max(...allEndDates)).toISOString(); // Return the latest end date in ISO format
+    return new Date(Math.max(...allEndDates)).toISOString();
   }
 
-  // Check if today's date is later than the latest end date
   isTodayLaterThanLatestEndDate(latestEndDate) {
-    return moment().isAfter(moment(latestEndDate), "day"); // Check if today is after the latest end date
+    return moment().isAfter(moment(latestEndDate), "day");
   }
 
-  // Fetch the school holiday data for the current school year
   async fetchHolidays() {
     const year = moment().year();
     let schoolyear = `${year - 1}-${year}`;
 
     if (this.isChangedSchoolYear(schoolyear)) {
-      this.cachedHolidayData = []; // Reset cached data if the school year has changed
+      this.cachedHolidayData = [];
     }
 
     if (this.cachedHolidayData.length > 0) {
-      return this.cachedHolidayData; // Return cached data if available
+      return this.cachedHolidayData;
     }
 
     try {
-      // Fetch the data for the current school year
       let data = await this.fetchSchoolHolidayData(schoolyear);
 
-      // Check if today is later than the latest end date and fetch next year’s data if necessary
       const latestEndDate = this.getLatestEndDate(data);
       if (this.isTodayLaterThanLatestEndDate(latestEndDate)) {
         schoolyear = `${year}-${year + 1}`;
         data = await this.fetchSchoolHolidayData(schoolyear);
       }
 
-      return data.content[0]; // Return the first item in the content array
+      return data.content[0];
     } catch (error) {
-      this.log("Error fetching holidays:", error); // Log errors
-      throw error; // Throw the error to handle it elsewhere
+      this.log("Error fetching holidays:", error);
+      throw error;
     }
   }
 
-  // Helper function to fetch holiday data from the API
   async fetchSchoolHolidayData(schoolyear) {
     const response = await fetch(`${API_ENDPOINT}${schoolyear}?output=json`);
     if (!response.ok) {
       throw new Error(`Failed to fetch data for school year: ${schoolyear}`);
     }
-    return response.json(); // Parse the JSON response
+    return response.json();
   }
 
-  // Check if the school year has changed
   isChangedSchoolYear(schoolyear) {
-    return this.schoolyear !== schoolyear || !this.schoolyear; // Return true if the school year has changed
+    return this.schoolyear !== schoolyear;
   }
 }
 

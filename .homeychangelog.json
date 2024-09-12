@@ -1,41 +1,54 @@
 {
   "1.0.0": {
-    "en": "First release"
+    "en": "First release",
+    "nl": "Eerste release"
   },
   "1.0.1": {
-    "en": "Updated github uri"
+    "en": "Updated github uri",
+    "nl": "Bijgewerkte github uri"
   },
   "1.0.2": {
-    "en": "Added tokens"
+    "en": "Added tokens",
+    "nl": "Tokens toegevoegd"
   },
   "1.0.3": {
-    "en": "Added token documentation"
+    "en": "Added token documentation",
+    "nl": "Documentatie voor tokens toegevoegd"
   },
   "1.1.0": {
-    "en": "Added new condition to specify the type of school holiday "
+    "en": "Added new condition to specify the type of school holiday",
+    "nl": "Nieuwe voorwaarde toegevoegd om het type schoolvakantie te specificeren"
   },
   "1.1.1": {
-    "en": "Added caching to prevent multiple API Calls"
+    "en": "Added caching to prevent multiple API Calls",
+    "nl": "Caching toegevoegd om meerdere API-oproepen te voorkomen"
   },
   "1.1.2": {
-    "en": "Added settingspage with overview of school holidays"
+    "en": "Added settingspage with overview of school holidays",
+    "nl": "Instellingenpagina toegevoegd met overzicht van schoolvakanties"
   },
   "1.1.3": {
-    "en": "Added Regions to settingspage and change labelnames."
+    "en": "Added Regions to settingspage and change labelnames.",
+    "nl": "Regio's toegevoegd aan instellingenpagina en labelnamen gewijzigd."
   },
   "1.1.4": {
-    "en": "Fix getting correct calendar data"
+    "en": "Fix getting correct calendar data",
+    "nl": "Oplossing voor het verkrijgen van de juiste kalendergegevens"
   },
   "1.1.5": {
-    "en": "Fix switching current years calendar"
+    "en": "Fix switching current years calendar",
+    "nl": "Oplossing voor het wisselen van de kalender van het huidige jaar"
   },
   "1.1.6": {
-    "en": "Update settings page"
+    "en": "Update settings page",
+    "nl": "Instellingenpagina bijgewerkt"
   },
   "1.1.7": {
-    "en": "Update fix for year listings"
+    "en": "Update fix for year listings",
+    "nl": "Update fix voor jaarlijsten"
   },
   "1.1.8": {
-    "en": "After latest holiday, fetch holidays for next year"
+    "en": "After latest holiday, fetch holidays for next year",
+    "nl": "Na de laatste vakantie, vakanties voor het volgende jaar ophalen"
   }
 }

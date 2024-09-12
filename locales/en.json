@@ -1,7 +1,45 @@
 {
-    "tokens": {
-        "yesterday": "School holiday yesterday",
-        "today": "School holiday today",
-        "tomorrow": "School holiday tomorrow"
+  "tokens": {
+    "yesterday": "School holiday yesterday",
+    "today": "School holiday today",
+    "tomorrow": "School holiday tomorrow"
+  },
+  "settings": {
+    "title": "Manage your holidays",
+    "subtitle": "Enter your own holiday period here",
+    "startDate": "Start date",
+    "endDate": "End date",
+    "add": "Add",
+    "remove": "Remove",
+    "no_holidays": "No holidays scheduled",
+    "errors": {
+      "emptyFields": "Fill in all fields"
+    },
+    "region": {
+      "north": "North",
+      "middle": "Middle",
+      "south": "South"
+    },
+    "regions": {
+      "title": "School holiday regions",
+      "intro": "To spread out school holidays, the Netherlands is divided into 3 regions. These are the North, Middle, and South regions. This distribution helps reduce holiday crowding during school vacations.",
+      "intro2": "Below you will find an overview of the regions. For each region, you will see which provinces and municipalities belong to the region.",
+      "province": "Province",
+      "municipality": "Municipality",
+      "all_municipalities": "All municipalities",
+      "except": "except",
+      "north": {
+        "title": "North Region",
+        "subtitle": "School holiday division for the North region"
+      },
+      "middle": {
+        "title": "Middle Region",
+        "subtitle": "School holiday division for the Middle region"
+      },
+      "south": {
+        "title": "South Region",
+        "subtitle": "School holiday division for the South region"
+      }
     }
+  }
 }

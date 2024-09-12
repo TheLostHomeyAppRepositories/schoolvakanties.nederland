@@ -1,0 +1,61 @@
+{
+  "id": "is_custom_holiday",
+  "title": {
+    "en": "It is my holiday",
+    "nl": "Het is mijn vakantie"
+  },
+  "titleFormatted": {
+    "en": "[[day]] it !{{is|isn't}} [[holiday]]",
+    "nl": "[[day]] is het !{{|niet}} [[holiday]]"
+  },
+  "hint": {
+    "en": "This flow will continue when it is (not) the choosen holiday. (You can set it up via setting)",
+    "nl": "De flow zal doorgaan als het wel/niet de gekozen vakantie is. (Je kunt dit instellen via instellingen)"
+  },
+  "args": [
+    {
+      "name": "day",
+      "type": "dropdown",
+      "title": {
+        "en": "Day",
+        "nl": "Dag"
+      },
+      "placeholder": {
+        "en": "Select a day",
+        "nl": "Selecteer een dag"
+      },
+      "values": [
+        {
+          "id": "today",
+          "label": {
+            "en": "Today",
+            "nl": "Vandaag"
+          }
+        },
+        {
+          "id": "tomorrow",
+          "label": {
+            "en": "Tomorrow",
+            "nl": "Morgen"
+          }
+        },
+        {
+          "id": "yesterday",
+          "label": {
+            "en": "Yesterday",
+            "nl": "Gisteren"
+          }
+        }
+      ]
+    },
+    {
+      "type": "autocomplete",
+      "name": "holiday",
+      "title": { "en": "Holiday", "nl": "Vakantie" },
+      "placeholder": {
+        "en": "Select a holiday",
+        "nl": "Selecteer een vakantie"
+      }
+    }
+  ]
+}

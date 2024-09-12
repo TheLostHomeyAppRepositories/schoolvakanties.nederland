@@ -1,7 +1,45 @@
 {
-    "tokens": {
-        "yesterday": "Schoolvakantie gisteren",
-        "today": "Schoolvakantie vandaag",
-        "tomorrow": "Schoolvakantie morgen"
+  "tokens": {
+    "yesterday": "Schoolvakantie gisteren",
+    "today": "Schoolvakantie vandaag",
+    "tomorrow": "Schoolvakantie morgen"
+  },
+  "settings": {
+    "title": "Beheer je vakanties",
+    "subtitle": "Vul hier een eigen vakantieperiode in",
+    "startDate": "Startdatum",
+    "endDate": "Einddatum",
+    "add": "Toevoegen",
+    "remove": "Verwijder",
+    "no_holidays": "Geen vakanties gepland",
+    "errors": {
+      "emptyFields": "Vul alle velden in"
+    },
+    "region": {
+      "north": "Noord",
+      "middle": "Midden",
+      "south": "Zuid"
+    },
+    "regions": {
+      "title": "Regio's schoolvakanties",
+      "intro": "Om de schoolvakanties te spreiden heeft Nederland 3 regio’s. Dit zijn de regio’s Noord, Midden en Zuid. De vakantiespreiding&nbsp;vermindert de vakantiedrukte in de schoolvakanties.",
+      "intro2": "Hieronder vindt u een overzicht van de regio’s. Per regio ziet u welke provincies en gemeenten tot de regio behoren.",
+      "province": "Provincie",
+      "municipality": "Gemeente",
+      "all_municipalities": "Alle gemeenten",
+      "except": "behalve",
+      "north": {
+        "title": "Regio Noord",
+        "subtitle": "Indeling schoolvakanties regio Noord"
+      },
+      "middle": {
+        "title": "Regio Midden",
+        "subtitle": "Indeling schoolvakanties regio Midden"
+      },
+      "south": {
+        "title": "Regio Zuid",
+        "subtitle": "Indeling schoolvakanties regio Zuid"
+      }
     }
+  }
 }
