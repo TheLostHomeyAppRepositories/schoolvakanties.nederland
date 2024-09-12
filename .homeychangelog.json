@@ -50,5 +50,8 @@
   "1.1.8": {
     "en": "After latest holiday, fetch holidays for next year",
     "nl": "Na de laatste vakantie, vakanties voor het volgende jaar ophalen"
+  },
+  "2.0.0": {
+    "en": "You are now able to manage your own custom holidays via settings."
   }
 }
