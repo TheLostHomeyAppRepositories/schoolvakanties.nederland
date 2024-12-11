@@ -1,6 +1,6 @@
 {
   "id": "schoolvakanties.nederland",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "compatibility": ">=12.1.0",
   "sdk": 3,
   "name": {
@@ -11,7 +11,9 @@
     "en": "School holidays to be used in your flow",
     "nl": "Schoolvakanties te gebruiken in je flow"
   },
-  "category": ["tools"],
+  "category": [
+    "tools"
+  ],
   "permissions": [],
   "brandColor": "#01689b",
   "images": {
@@ -36,8 +38,14 @@
     }
   },
   "tags": {
-    "en": ["school", "holiday"],
-    "nl": ["school", "vakantie"]
+    "en": [
+      "school",
+      "holiday"
+    ],
+    "nl": [
+      "school",
+      "vakantie"
+    ]
   },
   "api": {
     "getHolidays": {
@@ -45,7 +53,9 @@
       "path": "/holidays"
     }
   },
-  "platforms": ["local"],
+  "platforms": [
+    "local"
+  ],
   "contributors": {
     "developers": [
       {
