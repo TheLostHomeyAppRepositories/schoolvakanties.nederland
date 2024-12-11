@@ -54,5 +54,8 @@
   "2.0.0": {
     "en": "You are now able to manage your own custom holidays via settings.",
     "nl": "Je kunt nu uw eigen aangepaste vakanties beheren via instellingen."
+  },
+  "2.1.0": {
+    "en": "Added new widget"
   }
 }
