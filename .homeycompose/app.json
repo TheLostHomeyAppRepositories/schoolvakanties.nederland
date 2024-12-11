@@ -11,12 +11,8 @@
     "en": "School holidays to be used in your flow",
     "nl": "Schoolvakanties te gebruiken in je flow"
   },
-  "category": [
-    "tools"
-  ],
-  "permissions": [
-    "homey:manager:api"
-  ],
+  "category": ["tools"],
+  "permissions": [],
   "brandColor": "#01689b",
   "images": {
     "large": "/assets/images/large.png",
@@ -40,14 +36,8 @@
     }
   },
   "tags": {
-    "en": [
-      "school",
-      "holiday"
-    ],
-    "nl": [
-      "school",
-      "vakantie"
-    ]
+    "en": ["school", "holiday"],
+    "nl": ["school", "vakantie"]
   },
   "api": {
     "getHolidays": {
@@ -55,9 +45,7 @@
       "path": "/holidays"
     }
   },
-  "platforms": [
-    "local"
-  ],
+  "platforms": ["local"],
   "contributors": {
     "developers": [
       {
