@@ -1,0 +1,69 @@
+/* Example of a custom SCSS class */
+.homey-widget {
+  padding: var(--homey-su-2);
+  background: linear-gradient(90deg, rgba(0, 65, 96, 1) 0%, rgba(1, 104, 155, 1) 100%);
+  color: var(--homey-text-color-white);
+
+  .labelgroup {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .homey-title-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .homey-text-h1 {
+    font-size: var(--homey-font-size-medium);
+  }
+
+  .homey-text-regular {
+    font-size: var(--homey-font-size-small);
+    color: var(--homey-text-color-white);
+  }
+
+  &.custom-holiday .icon {
+    -webkit-mask: url(./calendar.svg) no-repeat center;
+    mask: url(./calendar.svg) no-repeat center;
+  }
+
+  &.is-active {
+    background: linear-gradient(146deg, rgba(86, 153, 68, 1) 0%, rgba(83, 227, 55, 1) 100%);
+    
+    .icon {
+      -webkit-mask: url(./calendar_active.svg) no-repeat center;
+      mask: url(./calendar_active.svg) no-repeat center;
+    }
+  }
+}
+
+#date {
+  text-transform: capitalize;
+}
+
+.icon-circle {
+  min-width: 40px;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--homey-su-2);
+
+  .icon {
+    background-color: white;
+    width: 80%;
+    height: 80%;
+    -webkit-mask: url(./icon.svg) no-repeat center;
+    mask: url(./icon.svg) no-repeat center;
+  }
+}
+
+.w-100 {
+  width: 100%;
+}

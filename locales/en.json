@@ -4,6 +4,14 @@
     "today": "School holiday today",
     "tomorrow": "School holiday tomorrow"
   },
+  "widgets": {
+    "upcomingholiday": {
+      "date": "No",
+      "label": "upcoming holidays"
+    },
+    "firstUpcomingHoliday": "first upcoming holiday",
+    "ends": "ends"
+  },
   "settings": {
     "title": "Manage your holidays",
     "subtitle": "Enter your own holiday period here",

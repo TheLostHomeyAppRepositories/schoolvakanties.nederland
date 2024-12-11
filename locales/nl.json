@@ -4,6 +4,14 @@
     "today": "Schoolvakantie vandaag",
     "tomorrow": "Schoolvakantie morgen"
   },
+  "widgets": {
+    "upcomingholiday": {
+      "date": "Geen",
+      "label": "aankomende vakanties"
+    },
+    "firstUpcomingHoliday": "Eerstvolgende vakantie",
+    "ends": "eindigt"
+  },
   "settings": {
     "title": "Beheer je vakanties",
     "subtitle": "Vul hier een eigen vakantieperiode in",

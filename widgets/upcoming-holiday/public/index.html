@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Holiday Widget</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/locale/nl.min.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body class="homey-widget homey-widget-small" id="homey-widget">
+    <div>
+      <div class="homey-title-container">
+        <div class="icon-circle"><img class="icon" alt="holiday icon" /></div>
+        <div class="w-100">
+          <h1
+            class="homey-text-h1"
+            id="date"
+            data-i18n="widgets.upcomingholiday.date"
+          ></h1>
+          <div class="labelgroup">
+            <span
+              class="homey-text-regular"
+              id="label"
+              data-i18n="widgets.upcomingholiday.label"
+            ></span>
+            <span class="homey-text-regular" id="sublabel"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      function onHomeyReady(Homey) {
+        Homey.ready();
+
+        moment.locale(Homey._language);
+        const DATE_FORMAT = "YYYY-MM-DD";
+        const TODAY = moment().format(DATE_FORMAT);
+        const startDateElement = document.getElementById("date");
+        const labelElement = document.getElementById("label");
+        const sublabelElement = document.getElementById("sublabel");
+        const widgetElement = document.getElementById("homey-widget");
+
+        const settings = Homey.getSettings();
+
+        // Only show first upcoming holiday
+        if (settings.only_upcoming) {
+          Homey._settings.holiday = null;
+        }
+
+        // Utility function to update UI with holiday data
+        function updateUI(holiday) {
+          if (holiday.isActive) {
+            widgetElement.classList.add("is-active");
+            labelElement.textContent = moment(holiday.startDate).format("LL");
+            sublabelElement.textContent = `${Homey.__("widgets.ends")} ${moment(
+              moment.endDate
+            )
+              .add(1, "day")
+              .fromNow()}`;
+            startDateElement.textContent = holiday.label;
+          } else {
+            startDateElement.textContent = moment(holiday.startDate)
+              .add(1, "day")
+              .fromNow();
+            labelElement.textContent = holiday.label;
+            sublabelElement.textContent = moment(holiday.startDate).format(
+              "LL"
+            );
+          }
+
+          if (!holiday.isSchoolHoliday) {
+            widgetElement.classList.add("custom-holiday");
+          }
+        }
+
+        // Function to process and format a single holiday object
+        async function createHolidayData(holiday) {
+          return {
+            isActive: moment().isBetween(
+              holiday.startDate,
+              holiday.endDate,
+              "day"
+            ),
+            isSchoolHoliday: holiday.isSchoolHoliday || false,
+            label: holiday.label || holiday.name,
+            startDate: moment(holiday.startDate).format(DATE_FORMAT),
+            endDate: moment(holiday.endDate).format(DATE_FORMAT),
+          };
+        }
+
+        // Fetch a single holiday from settings
+        async function fetchHoliday() {
+          try {
+            const holidayData = await createHolidayData(settings.holiday);
+            updateUI(holidayData);
+          } catch (error) {
+            console.error("Error processing holiday data:", error);
+          }
+        }
+
+        // Fetch multiple holidays from the API
+        async function fetchUpcomingHolidays() {
+          try {
+            const response = await Homey.api("POST", "/upcoming", {
+              region: settings.regio,
+              count: 12,
+            });
+
+            if (response.length > 0) {
+              const holidayData = await createHolidayData(response[0]);
+              updateUI(holidayData);
+            }
+          } catch (error) {
+            console.error("Error fetching upcoming holidays:", error);
+          }
+        }
+
+        // Determine which holiday data to fetch
+        if (settings.holiday) {
+          fetchHoliday();
+        } else {
+          fetchUpcomingHolidays();
+        }
+      }
+    </script>
+  </body>
+</html>

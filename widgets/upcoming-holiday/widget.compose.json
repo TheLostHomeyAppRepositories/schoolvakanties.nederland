@@ -1,0 +1,73 @@
+{
+  "name": {
+    "nl": "Aankomende vakantie",
+    "en": "Upcoming holiday"
+  },
+  "height": 55,
+  "settings": [
+    {
+      "id": "regio",
+      "type": "dropdown",
+      "title": {
+        "en": "Region",
+        "nl": "Regio"
+      },
+      "value": "zuid",
+      "values": [
+        {
+          "id": "noord",
+          "title": {
+            "en": "North Region",
+            "nl": "Regio Noord"
+          }
+        },
+        {
+          "id": "midden",
+          "title": {
+            "en": "Central Region",
+            "nl": "Regio Midden"
+          }
+        },
+        {
+          "id": "zuid",
+          "title": {
+            "en": "South Region",
+            "nl": "Regio Zuid"
+          }
+        }
+      ],
+      "hint": {
+        "en": "Select a region",
+        "nl": "Selecteer regio"
+      }
+    },
+    {
+      "id": "only_upcoming",
+      "type": "checkbox",
+      "value": true,
+      "title": {
+        "en": "Show only first upcoming holiday",
+        "nl": "Toon alleen eerst volgende vakantie"
+      },
+      "hint": {
+        "en": "A selected holiday will not be shown anymore.",
+        "nl": "Een gekozen vakantie word niet meer getoond."
+      }
+    },
+    {
+      "id": "holiday",
+      "type": "autocomplete",
+      "title": { "en": "Holiday", "nl": "Vakantie" },
+      "hint": {
+        "en": "Select a holiday or leave empty for the next holiday",
+        "nl": "Selecteer een vakantie of laat leeg voor de eerstvolgende vakantie"
+      }
+    }
+  ],
+  "api": {
+    "getUpcomingHolidays": {
+      "method": "POST",
+      "path": "/upcoming"
+    }
+  }
+}

@@ -55,6 +55,10 @@ If you like the app, you are free to sponsor.
 
 ### Release Notes
 
+#### 2.1.0
+
+- Added widget for upcoming (school) holiday
+
 #### 2.0.0
 
 - You are now able to manage your own custom holidays via settings.
