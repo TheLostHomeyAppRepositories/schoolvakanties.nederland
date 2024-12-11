@@ -246,13 +246,13 @@ class SchoolHolidayApp extends Homey.App {
     const regions = await this.fetchHolidays();
     const upcomingHolidays = this.processUpcomingHolidays(
       regions.vacations,
-      region.region,
+      region,
       count
     );
     return upcomingHolidays;
   }
 
-  async processUpcomingHolidays(regions, regionToFilter, count = 3) {
+  async processUpcomingHolidays(regions, regionToFilter, count) {
     const customDates = this.homey.settings.get(CUSTOM_DATES_KEY) || [];
     customDates.forEach((item) => {
       (item.isActive = moment().isBetween(item.startDate, item.endDate, "day")),
@@ -279,7 +279,6 @@ class SchoolHolidayApp extends Homey.App {
     const allHolidays = [...regionDates, ...customDates]
       .sort((a, b) => new Date(a.startDate) - new Date(b.startDate)) // Sort by startDate
       .slice(0, count); // Limit to the first 'count' upcoming holidays
-
     return allHolidays;
   }
 
