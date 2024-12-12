@@ -55,6 +55,10 @@ If you like the app, you are free to sponsor.
 
 ### Release Notes
 
+#### 2.1.5
+
+- Made widget bigger
+
 #### 2.1.4
 
 - Added interval to fetch data and use calendar method from momentjs
