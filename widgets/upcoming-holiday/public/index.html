@@ -34,8 +34,35 @@
     <script type="text/javascript">
       function onHomeyReady(Homey) {
         Homey.ready();
-
         moment.locale(Homey._language);
+
+        calendar = {
+          nl: {
+            sameDay: "[Vandaag]",
+            nextDay: "[Morgen]",
+            nextWeek: "dddd",
+            lastDay: "[Gisteren]",
+            lastWeek: "[Afgelopen] dddd",
+            sameElse: function () {
+              return `[${moment(this).fromNow()}]`;
+            },
+          },
+          en: {
+            sameDay: "[Today]",
+            nextDay: "[Tomorrow]",
+            nextWeek: "dddd",
+            lastDay: "[Yesterday]",
+            lastWeek: "[Last] dddd",
+            sameElse: function () {
+              return `[${moment(this).fromNow()}]`;
+            },
+          },
+        };
+
+        moment.updateLocale(Homey._language, {
+          calendar: calendar[Homey._language],
+        });
+
         const DATE_FORMAT = "YYYY-MM-DD";
         const TODAY = moment().format(DATE_FORMAT);
         const startDateElement = document.getElementById("date");
@@ -51,11 +78,13 @@
         }
 
         function daysToGo(startDate) {
-          return moment(startDate).fromNow();
+          return moment(startDate).calendar();
         }
 
         function daysRemaining(endDate) {
-          return `${Homey.__("widgets.ends")} ${moment(endDate).fromNow()}`;
+          return `${Homey.__("widgets.ends")} ${moment(endDate)
+            .calendar()
+            .toLowerCase()}`;
         }
 
         // Utility function to update UI with holiday data
@@ -122,11 +151,22 @@
         }
 
         // Determine which holiday data to fetch
-        if (settings.holiday) {
-          fetchHoliday();
-        } else {
-          fetchUpcomingHolidays();
+        async function fetchAllData() {
+          if (settings.holiday) {
+            fetchHoliday();
+          } else {
+            fetchUpcomingHolidays();
+          }
         }
+
+        // Initial fetch of holiday data
+        fetchAllData();
+
+        // Every hour, check if the holiday data needs to be updated
+        setInterval(() => {
+          console.log("Fetching holiday data");
+          fetchAllData();
+        }, 3600000);
       }
     </script>
   </body>
