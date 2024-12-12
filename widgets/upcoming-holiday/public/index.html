@@ -50,21 +50,23 @@
           Homey._settings.holiday = null;
         }
 
+        function daysToGo(startDate) {
+          return moment(startDate).fromNow();
+        }
+
+        function daysRemaining(endDate) {
+          return `${Homey.__("widgets.ends")} ${moment(endDate).fromNow()}`;
+        }
+
         // Utility function to update UI with holiday data
         function updateUI(holiday) {
           if (holiday.isActive) {
             widgetElement.classList.add("is-active");
             labelElement.textContent = moment(holiday.startDate).format("LL");
-            sublabelElement.textContent = `${Homey.__("widgets.ends")} ${moment(
-              moment.endDate
-            )
-              .add(1, "day")
-              .fromNow()}`;
+            sublabelElement.textContent = daysRemaining(holiday.endDate);
             startDateElement.textContent = holiday.label;
           } else {
-            startDateElement.textContent = moment(holiday.startDate)
-              .add(1, "day")
-              .fromNow();
+            startDateElement.textContent = daysToGo(holiday.startDate);
             labelElement.textContent = holiday.label;
             sublabelElement.textContent = moment(holiday.startDate).format(
               "LL"
@@ -79,10 +81,11 @@
         // Function to process and format a single holiday object
         async function createHolidayData(holiday) {
           return {
-            isActive: moment().isBetween(
+            isActive: moment({ hours: 0 }).isBetween(
               holiday.startDate,
               holiday.endDate,
-              "day"
+              "day",
+              "[)"
             ),
             isSchoolHoliday: holiday.isSchoolHoliday || false,
             label: holiday.label || holiday.name,
