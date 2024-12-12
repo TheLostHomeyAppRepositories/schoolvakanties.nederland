@@ -66,5 +66,8 @@
   },
   "2.1.3": {
     "en": "fix incorrect dates"
+  },
+  "2.1.4": {
+    "en": "Added interval to fetch data and use calendar method from momentjs"
   }
 }
