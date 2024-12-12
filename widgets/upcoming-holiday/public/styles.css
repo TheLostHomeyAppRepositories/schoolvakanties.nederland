@@ -1,6 +1,5 @@
 /* Example of a custom SCSS class */
 .homey-widget {
-  padding: var(--homey-su-2);
   background: linear-gradient(90deg, rgba(0, 65, 96, 1) 0%, rgba(1, 104, 155, 1) 100%);
   color: var(--homey-text-color-white);
 
@@ -8,6 +7,7 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
+    align-items: last baseline;
   }
 
   .homey-title-container {
@@ -17,11 +17,15 @@
   }
 
   .homey-text-h1 {
-    font-size: var(--homey-font-size-medium);
+    font-size: var(--homey-font-size-xlarge);
   }
 
   .homey-text-regular {
-    font-size: var(--homey-font-size-small);
+    font-size: var(--homey-font-size-medium);
+    font-weight: var(--homey-font-weight-medium);
+    /* color: var(--homey-text-color-white); */
+  }
+  .homey-text-small {
     color: var(--homey-text-color-white);
   }
 
@@ -31,8 +35,7 @@
   }
 
   &.is-active {
-    background: linear-gradient(146deg, rgba(86, 153, 68, 1) 0%, rgba(83, 227, 55, 1) 100%);
-    
+    background: linear-gradient(146deg, #0c6c3d 0%, rgba(83, 227, 55, 1) 100%);    
     .icon {
       -webkit-mask: url(./calendar_active.svg) no-repeat center;
       mask: url(./calendar_active.svg) no-repeat center;
@@ -45,9 +48,9 @@
 }
 
 .icon-circle {
-  min-width: 40px;
-  width: 40px;
-  height: 40px;
+  min-width: 42px;
+  width: 42px;
+  height: 42px;
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 50%;
   display: flex;
@@ -57,8 +60,8 @@
 
   .icon {
     background-color: white;
-    width: 80%;
-    height: 80%;
+    width: 95%;
+    height: 95%;
     -webkit-mask: url(./icon.svg) no-repeat center;
     mask: url(./icon.svg) no-repeat center;
   }
@@ -66,4 +69,5 @@
 
 .w-100 {
   width: 100%;
+  line-height: 1.3;
 }
