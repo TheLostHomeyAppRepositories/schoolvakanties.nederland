@@ -69,5 +69,8 @@
   },
   "2.1.4": {
     "en": "Added interval to fetch data and use calendar method from momentjs"
+  },
+  "2.1.5": {
+    "en": "Made widget bigger"
   }
 }
