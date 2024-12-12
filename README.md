@@ -55,6 +55,18 @@ If you like the app, you are free to sponsor.
 
 ### Release Notes
 
+#### 2.1.3
+
+- Fix incorrect dates inside the widget
+
+#### 2.1.2
+
+- Bugfixes
+
+#### 2.1.1
+
+- Bugfixes
+
 #### 2.1.0
 
 - Added widget for upcoming (school) holiday
