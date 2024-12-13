@@ -72,5 +72,8 @@
   },
   "2.1.5": {
     "en": "Made widget bigger"
+  },
+  "2.2.0": {
+    "en": "Able to update the custom holidays and truncate too long text"
   }
 }
