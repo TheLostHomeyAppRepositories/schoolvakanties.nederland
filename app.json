@@ -52,6 +52,14 @@
     "getHolidays": {
       "method": "GET",
       "path": "/holidays"
+    },
+    "updateHoliday": {
+      "method": "PUT",
+      "path": "/holiday/:id"
+    },
+    "removeHoliday": {
+      "method": "DELETE",
+      "path": "/holiday/:id"
     }
   },
   "platforms": [
@@ -429,6 +437,14 @@
         "getUpcomingHolidays": {
           "method": "POST",
           "path": "/upcoming"
+        },
+        "getHolidayById": {
+          "method": "GET",
+          "path": "/holiday/:id"
+        },
+        "updateSettings": {
+          "method": "PUT",
+          "path": "/holiday/:id"
         }
       },
       "id": "upcoming-holiday"

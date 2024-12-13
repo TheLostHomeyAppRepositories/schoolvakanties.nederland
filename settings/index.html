@@ -15,10 +15,11 @@
         <div id="custom_dates">
             <form id="dateForm" class="homey-form">
                 <fieldset class="homey-form-fieldset">
+                    <input type="hidden" id="customId" name="customId" class="homey-form-input">
                     <div class="homey-form-group">
                         <label class="homey-form-label"
                             for="customLabel">Label:</label>
-                        <input type="text" id="customLabel" name="customLabel"
+                        <input type="text" id="customLabel" name="customLabel" maxlength="150"
                             class="homey-form-input" required>
                     </div>
                     <div class="input-container">
@@ -240,171 +241,223 @@
                     </table>
                 </div>
             </div>
+            
             <script type="text/javascript">
-                // Set locale for Moment.js
-                moment.locale('nl');
-            
                 const CUSTOM_DATES_KEY = 'customDates';
+                
+                // Initialize Homey API and set up form functionality
+                async function onHomeyReady(Homey) {
             
-                // Render school vacation data
-                function renderSchoolVacations(data) {
-                    const dateFormat = "ll";
-                    const table = document.getElementById('dates');
-                    const tbody = table.querySelector('tbody');
-            
-                    // Set table headers
-                    table.querySelector('h1').textContent = `Schoolvakantie ${data.schoolyear}`;
-                    table.querySelector('h3').textContent = data.title;
-            
-                    // Clear previous table rows
-                    tbody.innerHTML = '';
-            
-                    // Create rows for each vacation
-                    data.vacations.forEach(vacation => {
-                        const tr = document.createElement("tr");
-                        const th = document.createElement("th");
-                        th.setAttribute('scope', 'row');
-                        th.innerHTML = `<p>${vacation.type}</p>`;
-                        tr.append(th);
-            
-                        // Handle region dates
-                        const dates = vacation.regions.map(region => 
-                            moment(region.startdate).format(dateFormat) + " t/m " + moment(region.enddate).format(dateFormat)
+                    // Helper functions for Homey settings
+                    const getSettings = () =>
+                        new Promise((resolve, reject) =>
+                            Homey.get(CUSTOM_DATES_KEY, (err, settings) => (err ? reject(err) : resolve(settings)))
                         );
             
-                        // If multiple regions, create a cell for each region
-                        if (dates.length > 1) {
-                            dates.forEach(date => {
-                                const td = document.createElement("td");
-                                td.textContent = date;
-                                tr.append(td);
-                            });
-                        } else {
-                            // If only one region, replicate date across 3 cells
-                            for (let i = 0; i < 3; i++) {
-                                const td = document.createElement("td");
-                                td.textContent = dates[0];
-                                tr.append(td);
-                            }
-                        }
-            
-                        tbody.appendChild(tr);
-                    });
-            
-                    // Load custom dates if available
-                    Homey.get(CUSTOM_DATES_KEY, (err, customDates) => {
-                        if (err) return Homey.alert(err);
-                        if (customDates) renderCustomDatesTable(customDates, Homey);
-                    });
-                }
-            
-                // Delete custom date and update the table
-                function deleteCustomDate(id, customDatesArray, Homey) {
-                    const updatedDates = customDatesArray.filter(date => date.id !== id);
-                    Homey.set(CUSTOM_DATES_KEY, updatedDates, err => {
-                        if (err) return Homey.alert('Error deleting custom date: ' + err);
-                        renderCustomDatesTable(updatedDates, Homey);
-                    });
-                }
-            
-                // Render custom dates table
-                function renderCustomDatesTable(customDatesArray, Homey) {
-                    const tableContainer = document.getElementById('custom-dates');
-                    let tableHTML = `
-                        <div class="scrollcontainer">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Label</th>
-                                        <th>${Homey.__('settings.startDate')}</th>
-                                        <th>${Homey.__('settings.endDate')}</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                    `;
-            
-                    // Handle case when no custom dates are available
-                    if (customDatesArray.length === 0) {
-                        tableHTML += `<tr><td colspan="4">${Homey.__('settings.no_holidays')}</td></tr>`;
-                    } else {
-                        customDatesArray.forEach(date => {
-                            tableHTML += `
-                                <tr>
-                                    <td>${date.label}</td>
-                                    <td>${moment(date.startDate).format('ll')}</td>
-                                    <td>${moment(date.endDate).format('ll')}</td>
-                                    <td>
-                                        <button class="delete-btn homey-button-danger-shadow homey-button-small" data-id="${date.id}">
-                                            ${Homey.__('settings.remove')}
-                                        </button>
-                                    </td>
-                                </tr>
-                            `;
+                    const saveHoliday = (settings, id) =>
+                        new Promise((resolve, reject) => {
+                            Homey.set(CUSTOM_DATES_KEY, settings.customDates, (err) => (err ? reject(err) : resolve()))
+                            // Update api settings
+                            const savedHoliday = settings.customDates.find((item) => item.id === id);
+                            Homey.api('PUT', `/holiday/${id}`, savedHoliday)
                         });
-                    }
-            
-                    tableHTML += '</tbody></table></div>';
-                    tableContainer.innerHTML = tableHTML;
-            
-                    // Attach event listeners to delete buttons
-                    document.querySelectorAll('.delete-btn').forEach(button => {
-                        button.addEventListener("click", function () {
-                            const id = parseInt(this.getAttribute('data-id'));
-                            deleteCustomDate(id, customDatesArray, Homey);
-                        });
-                    });
-                }
-            
-                // Initialize Homey API and set up form functionality
-                function onHomeyReady(Homey) {
-                    // Fetch holidays data from Homey API
-                    Homey.api('GET', '/holidays', (err, result) => {
-                        if (err) return Homey.alert('Error fetching holidays', err);
-                        renderSchoolVacations(result);
-                    });
-            
-                    Homey.ready();
                     
-                    // Set up form elements for custom dates
+                    const removeHoliday = (id) =>
+                        new Promise((resolve, reject) => {
+                            handleDelete(id)
+                            Homey.api('DELETE', `/holiday/${id}`)
+                        });
+            
+                    // Set locale for date formatting
+                    moment.locale(Homey._language);
+
+                    // Get form elements
                     const startDateElement = document.getElementById("startDate");
                     const endDateElement = document.getElementById("endDate");
                     const customLabelElement = document.getElementById("customLabel");
+                    const idElement = document.getElementById("customId");
                     const saveElement = document.getElementById("saveCustomDate");
-            
+                    const tableContainer = document.getElementById("custom-dates");
+
                     let customDatesArray = [];
             
-                    // Load custom dates from storage
-                    Homey.get(CUSTOM_DATES_KEY, (err, customDates) => {
-                        if (err) return Homey.alert(err);
-                        if (customDates) customDatesArray = customDates;
+                    // Fetch holidays and render school vacations
+                    try {
+                        const holidays = await Homey.api('GET', '/holidays');
+                        renderSchoolVacations(holidays);
+                    } catch (err) {
+                        Homey.alert('Error fetching holidays', err);
+                    }
+            
+                    // Load and render custom dates
+                    try {
+                        const settings = await getSettings();
+                        customDatesArray = settings || [];
+                        renderCustomDatesTable(customDatesArray);
+                    } catch (err) {
+                        console.error('Error loading settings:', err);
+                    }
+            
+                    // Helper functions
+                    function renderSchoolVacations(data) {
+                        const dateFormat = "ll";
+                        const table = document.getElementById('dates');
+                        const tbody = table.querySelector('tbody');
+            
+                        // Set headers
+                        table.querySelector('h1').textContent = `Schoolvakantie ${data.schoolyear}`;
+                        table.querySelector('h3').textContent = data.title;
+            
+                         // Clear previous table rows
+                         tbody.innerHTML = '';
+                
+                        // Create rows for each vacation
+                        data.vacations.forEach(vacation => {
+                            const tr = document.createElement("tr");
+                            const th = document.createElement("th");
+                            th.setAttribute('scope', 'row');
+                            th.innerHTML = `<p>${vacation.type}</p>`;
+                            tr.append(th);
+                
+                            // Handle region dates
+                            const dates = vacation.regions.map(region => 
+                                moment(region.startdate).format(dateFormat) + " t/m " + moment(region.enddate).format(dateFormat)
+                            );
+                
+                            // If multiple regions, create a cell for each region
+                            if (dates.length > 1) {
+                                dates.forEach(date => {
+                                    const td = document.createElement("td");
+                                    td.textContent = date;
+                                    tr.append(td);
+                                });
+                            } else {
+                                // If only one region, replicate date across 3 cells
+                                for (let i = 0; i < 3; i++) {
+                                    const td = document.createElement("td");
+                                    td.textContent = dates[0];
+                                    tr.append(td);
+                                }
+                            }
+                
+                            tbody.appendChild(tr);
+                        });
+                
+                    }
+            
+                    function renderCustomDatesTable(dates) {
+                        const noDataText = Homey.__('settings.no_holidays');
+                        let tableHTML = `
+                            <div class="scrollcontainer">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Label</th>
+                                            <th>${Homey.__('settings.startDate')}</th>
+                                            <th>${Homey.__('settings.endDate')}</th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                        `;
+                
+                        // Handle case when no custom dates are available
+                        if (customDatesArray.length === 0) {
+                            tableHTML += `<tr><td colspan="5">${Homey.__('settings.no_holidays')}</td></tr>`;
+                        } else {
+                            customDatesArray.forEach(date => {
+                                tableHTML += `
+                                    <tr>
+                                        <td>${date.label}</td>
+                                        <td>${moment(date.startDate).format('ll')}</td>
+                                        <td>${moment(date.endDate).format('ll')}</td>
+                                        <td>
+                                            <button class="update-btn homey-button-secondary-shadow homey-button-small" data-id="${date.id}">
+                                                ${Homey.__('settings.edit')}
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button class="delete-btn homey-button-danger-shadow homey-button-small" data-id="${date.id}">
+                                                ${Homey.__('settings.remove')}
+                                            </button>
+                                        </td>
+                                    </tr>
+                                `;
+                            });
+                        }
+                        tableHTML += '</tbody></table></div>';
+                        tableContainer.innerHTML = tableHTML;
+            
+                        // Attach event listeners
+                        document.querySelectorAll('.delete-btn').forEach((btn) => {
+                            btn.addEventListener('click', () => removeHoliday(parseInt(btn.dataset.id)));
+                        });
+                        document.querySelectorAll('.update-btn').forEach((btn) => {
+                            btn.addEventListener('click', () => prefillForm(parseInt(btn.dataset.id)));
+                        });
+                    }
+            
+                    function prefillForm(id) {
+                        const date = customDatesArray.find((item) => item.id === id);
+                        if (date) {
+                            customLabelElement.value = date.label;
+                            startDateElement.value = date.startDate;
+                            endDateElement.value = date.endDate;
+                            idElement.value = date.id;
+                            saveElement.textContent = Homey.__('settings.save');
+                        }
+                    }
+                    
+                    function emptyForm() {
+                        customLabelElement.value = '';
+                        startDateElement.value = '';
+                        endDateElement.value = '';
+                        idElement.value = '';
+                        saveElement.textContent = Homey.__('settings.add');
+                    }
+            
+                    async function handleDelete(id) {
+                        customDatesArray = customDatesArray.filter((item) => item.id !== id);
+                        await saveHoliday({ customDates: customDatesArray }, id);
+                        renderCustomDatesTable(customDatesArray);
+                    }
+                    
+                    // Event listeners
+                    saveElement.addEventListener('click', async (event) => {
+
+                        if (!document.getElementById("dateForm").checkValidity()) return;
+                        event.preventDefault();
+
+                        const id = parseInt(idElement.value) || Date.now();
+                        const newEntry = {
+                            id,
+                            label: customLabelElement.value,
+                            startDate: startDateElement.value,
+                            endDate: endDateElement.value,
+                        };
+            
+                        const index = customDatesArray.findIndex((item) => item.id === id);
+                        if (index !== -1) {
+                            customDatesArray[index] = newEntry;
+                        } else {
+                            customDatesArray.push(newEntry);
+                        }
+                        saveElement.classList.add('is-loading');
+                        await saveHoliday({ customDates: customDatesArray }, id);
+                        await renderCustomDatesTable(customDatesArray);
+                        saveElement.classList.remove('is-loading');
+                        emptyForm()
                     });
             
-                    // Ensure end date is always after start date
-                    startDateElement.addEventListener("change", (e) => {
+                    startDateElement.addEventListener('change', (e) => {
                         endDateElement.setAttribute('min', e.target.value);
                     });
             
-                    // Save custom date
-                    saveElement.addEventListener("click", () => {
-                        if (!customLabelElement.value || !startDateElement.value || !endDateElement.value) return;
-            
-                        if (document.getElementById("dateForm").checkValidity()) {
-                            customDatesArray.push({
-                                id: Date.now(),
-                                label: customLabelElement.value,
-                                startDate: startDateElement.value,
-                                endDate: endDateElement.value
-                            });
-            
-                            Homey.set(CUSTOM_DATES_KEY, customDatesArray, err => {
-                                if (err) return Homey.alert('Error saving custom date', err);
-                                renderCustomDatesTable(customDatesArray, Homey);
-                            });
-                        }
-                    });
+                    Homey.ready();
                 }
             </script>
+            
 
         </body>
     </html>

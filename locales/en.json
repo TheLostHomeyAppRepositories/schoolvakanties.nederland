@@ -19,6 +19,8 @@
     "endDate": "End date",
     "add": "Add",
     "remove": "Remove",
+    "edit": "Change",
+    "save": "Opslaan",
     "no_holidays": "No holidays scheduled",
     "errors": {
       "emptyFields": "Fill in all fields"

@@ -19,6 +19,8 @@
     "endDate": "Einddatum",
     "add": "Toevoegen",
     "remove": "Verwijder",
+    "edit": "Aanpassen",
+    "save": "Opslaan",
     "no_holidays": "Geen vakanties gepland",
     "errors": {
       "emptyFields": "Vul alle velden in"

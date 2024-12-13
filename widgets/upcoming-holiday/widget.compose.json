@@ -68,6 +68,14 @@
     "getUpcomingHolidays": {
       "method": "POST",
       "path": "/upcoming"
+    },
+    "getHolidayById": {
+      "method": "GET",
+      "path": "/holiday/:id"
+    },
+    "updateSettings": {
+      "method": "PUT",
+      "path": "/holiday/:id"
     }
   }
 }

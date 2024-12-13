@@ -18,12 +18,13 @@
 
   .homey-text-h1 {
     font-size: var(--homey-font-size-xlarge);
+    max-width: 275px;
   }
 
   .homey-text-regular {
     font-size: var(--homey-font-size-medium);
     font-weight: var(--homey-font-weight-medium);
-    /* color: var(--homey-text-color-white); */
+    max-width: 180px;
   }
   .homey-text-small {
     color: var(--homey-text-color-white);
@@ -40,6 +41,12 @@
       -webkit-mask: url(./calendar_active.svg) no-repeat center;
       mask: url(./calendar_active.svg) no-repeat center;
     }
+  }
+  .text-truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+   
   }
 }
 

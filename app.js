@@ -16,7 +16,6 @@ class SchoolHolidayApp extends Homey.App {
   async onInit() {
     this.log("School Holidays Netherlands initialized");
     moment.locale(this.homey.i18n.getLanguage());
-
     this.schoolyear = null;
     this.cachedHolidayData = [];
 
@@ -252,9 +251,25 @@ class SchoolHolidayApp extends Homey.App {
     return upcomingHolidays;
   }
 
+  async saveHoliday(id, data) {
+    this.homey.api.realtime("updateHolidayEvent", data);
+  }
+
+  async removeHoliday(id) {
+    // TODO: when Homey is able to setSettings() update this when a holiday is removed
+    this.homey.api.realtime("removeHolidayEvent", id);
+  }
+
+  async getHolidayById(params) {
+    const id = parseInt(params?.id);
+    return this.homey.settings
+      .get(CUSTOM_DATES_KEY)
+      .find((item) => item.id === id);
+  }
+
   async processUpcomingHolidays(regions, regionToFilter, count) {
     const customDates = this.homey.settings.get(CUSTOM_DATES_KEY) || [];
-    customDates.forEach((item) => {
+    customDates?.forEach((item) => {
       (item.isActive = moment().isBetween(item.startDate, item.endDate, "day")),
         (item.isSchoolHoliday = false);
     });
