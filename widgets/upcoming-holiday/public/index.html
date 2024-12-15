@@ -109,6 +109,7 @@
             sublabelElement.textContent = daysRemaining(holiday.endDate);
             startDateElement.textContent = holiday.label;
           } else {
+            widgetElement.classList.remove("is-active");
             startDateElement.textContent = daysToGo(holiday.startDate);
             labelElement.textContent = holiday.label;
             sublabelElement.textContent = moment(holiday.startDate).format("L");
@@ -116,6 +117,8 @@
 
           if (!holiday.isSchoolHoliday) {
             widgetElement.classList.add("custom-holiday");
+          } else {
+            widgetElement.classList.remove("custom-holiday");
           }
         }
 
@@ -127,7 +130,7 @@
               holiday.startDate,
               holiday.endDate,
               "day",
-              "[)"
+              "[]"
             ),
             isSchoolHoliday: holiday.isSchoolHoliday || false,
             label: holiday.label || holiday.name,
@@ -152,7 +155,14 @@
           Homey.on("updateHolidayEvent", async (data) => {
             const holidayId = parseInt(data.id);
             if (currentHolidayData?.id === holidayId) {
+              data.isActive = moment({ hours: 0 }).isBetween(
+                data.startDate,
+                data.endDate,
+                "day",
+                "[]"
+              );
               const updatedHoliday = await createHolidayData(data);
+              console.log(updatedHoliday);
               updateUI(updatedHoliday);
             }
           });
