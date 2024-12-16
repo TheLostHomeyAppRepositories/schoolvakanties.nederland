@@ -155,15 +155,14 @@
           Homey.on("updateHolidayEvent", async (data) => {
             const holidayId = parseInt(data.id);
             if (currentHolidayData?.id === holidayId) {
-              data.isActive = moment({ hours: 0 }).isBetween(
-                data.startDate,
-                data.endDate,
-                "day",
-                "[]"
-              );
-              const updatedHoliday = await createHolidayData(data);
-              console.log(updatedHoliday);
-              updateUI(updatedHoliday);
+              if (moment().isBefore(data.endDate)) {
+                const updatedHoliday = await createHolidayData(data);
+                updateUI(updatedHoliday);
+              } else {
+                fetchAllData();
+              }
+            } else {
+              fetchAllData();
             }
           });
 
@@ -174,7 +173,6 @@
                 currentHolidayData = null;
                 fetchUpcomingHolidays();
               }
-              // updateUI(updatedHoliday);
             }
           });
         }
