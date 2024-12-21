@@ -81,5 +81,8 @@
   },
   "2.2.2": {
     "en": "Bugfixes"
+  },
+  "2.2.3": {
+    "en": "Improve storing widget data and added translations for \"French\" and \"German\""
   }
 }
