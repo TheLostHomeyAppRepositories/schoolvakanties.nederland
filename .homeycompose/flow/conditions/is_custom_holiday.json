@@ -2,15 +2,21 @@
   "id": "is_custom_holiday",
   "title": {
     "en": "It is my holiday",
-    "nl": "Het is mijn vakantie"
+    "nl": "Het is mijn vakantie",
+    "fr": "C'est mes vacances",
+    "de": "Es ist mein Urlaub"
   },
   "titleFormatted": {
     "en": "[[day]] it !{{is|isn't}} [[holiday]]",
-    "nl": "[[day]] is het !{{|niet}} [[holiday]]"
+    "nl": "[[day]] is het !{{|niet}} [[holiday]]",
+    "fr": "[[day]] c'est !{{est|n'est pas}} [[holiday]]",
+    "de": "[[day]] es !{{ist|ist nicht}} [[holiday]]"
   },
   "hint": {
-    "en": "This flow will continue when it is (not) the choosen holiday. (You can set it up via setting)",
-    "nl": "De flow zal doorgaan als het wel/niet de gekozen vakantie is. (Je kunt dit instellen via instellingen)"
+    "en": "This flow will continue when it is (not) the chosen holiday. (You can set it up via setting)",
+    "nl": "De flow zal doorgaan als het wel/niet de gekozen vakantie is. (Je kunt dit instellen via instellingen)",
+    "fr": "Ce flux continuera lorsqu'il s'agit (ou non) des vacances choisies. (Vous pouvez le configurer via les paramètres)",
+    "de": "Dieser Ablauf wird fortgesetzt, wenn es (nicht) der gewählte Urlaub ist. (Sie können es über die Einstellungen einrichten)"
   },
   "args": [
     {
@@ -18,32 +24,42 @@
       "type": "dropdown",
       "title": {
         "en": "Day",
-        "nl": "Dag"
+        "nl": "Dag",
+        "fr": "Jour",
+        "de": "Tag"
       },
       "placeholder": {
         "en": "Select a day",
-        "nl": "Selecteer een dag"
+        "nl": "Selecteer een dag",
+        "fr": "Sélectionnez un jour",
+        "de": "Wählen Sie einen Tag"
       },
       "values": [
         {
           "id": "today",
           "label": {
             "en": "Today",
-            "nl": "Vandaag"
+            "nl": "Vandaag",
+            "fr": "Aujourd'hui",
+            "de": "Heute"
           }
         },
         {
           "id": "tomorrow",
           "label": {
             "en": "Tomorrow",
-            "nl": "Morgen"
+            "nl": "Morgen",
+            "fr": "Demain",
+            "de": "Morgen"
           }
         },
         {
           "id": "yesterday",
           "label": {
             "en": "Yesterday",
-            "nl": "Gisteren"
+            "nl": "Gisteren",
+            "fr": "Hier",
+            "de": "Gestern"
           }
         }
       ]
@@ -51,10 +67,17 @@
     {
       "type": "autocomplete",
       "name": "holiday",
-      "title": { "en": "Holiday", "nl": "Vakantie" },
+      "title": {
+        "en": "Holiday",
+        "nl": "Vakantie",
+        "fr": "Vacances",
+        "de": "Urlaub"
+      },
       "placeholder": {
         "en": "Select a holiday",
-        "nl": "Selecteer een vakantie"
+        "nl": "Selecteer een vakantie",
+        "fr": "Sélectionnez des vacances",
+        "de": "Wählen Sie einen Urlaub"
       }
     }
   ]

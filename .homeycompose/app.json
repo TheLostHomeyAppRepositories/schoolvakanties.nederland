@@ -5,15 +5,17 @@
   "sdk": 3,
   "name": {
     "en": "School holidays",
-    "nl": "Schoolvakanties"
+    "nl": "Schoolvakanties",
+    "fr": "Vacances scolaires",
+    "de": "Schulferien"
   },
   "description": {
     "en": "School holidays to be used in your flow",
-    "nl": "Schoolvakanties te gebruiken in je flow"
+    "nl": "Schoolvakanties te gebruiken in je flow",
+    "fr": "Vacances scolaires à utiliser dans votre flux",
+    "de": "Schulferien zur Verwendung in Ihrem Flow"
   },
-  "category": [
-    "tools"
-  ],
+  "category": ["tools"],
   "permissions": [],
   "brandColor": "#01689b",
   "images": {
@@ -38,14 +40,10 @@
     }
   },
   "tags": {
-    "en": [
-      "school",
-      "holiday"
-    ],
-    "nl": [
-      "school",
-      "vakantie"
-    ]
+    "en": ["school", "holiday"],
+    "nl": ["school", "vakantie"],
+    "fr": ["école", "vacances"],
+    "de": ["Schule", "Ferien"]
   },
   "api": {
     "getHolidays": {
@@ -61,9 +59,7 @@
       "path": "/holiday/:id"
     }
   },
-  "platforms": [
-    "local"
-  ],
+  "platforms": ["local"],
   "contributors": {
     "developers": [
       {

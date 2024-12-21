@@ -257,17 +257,10 @@ class SchoolHolidayApp extends Homey.App {
   }
 
   async saveHoliday(id, data) {
-    console.log("saveHoliday", id, data);
-
-    console.log(
-      "this.homey.settings.get",
-      this.homey.settings.get(CUSTOM_DATES_KEY)
-    );
     this.homey.api.realtime("updateHolidayEvent", data);
   }
 
   async removeHoliday(id) {
-    // TODO: when Homey is able to setSettings() update this when a holiday is removed
     this.homey.api.realtime("removeHolidayEvent", id);
   }
 

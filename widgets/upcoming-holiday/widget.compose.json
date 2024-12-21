@@ -1,7 +1,9 @@
 {
   "name": {
     "nl": "Aankomende vakantie",
-    "en": "Upcoming holiday"
+    "en": "Upcoming holiday",
+    "de": "Kommender Urlaub",
+    "fr": "Vacances à venir"
   },
   "height": 75,
   "settings": [
@@ -10,7 +12,9 @@
       "type": "dropdown",
       "title": {
         "en": "Region",
-        "nl": "Regio"
+        "nl": "Regio",
+        "de": "Region",
+        "fr": "Région"
       },
       "value": "zuid",
       "values": [
@@ -18,27 +22,35 @@
           "id": "noord",
           "title": {
             "en": "North Region",
-            "nl": "Regio Noord"
+            "nl": "Regio Noord",
+            "de": "Nordregion",
+            "fr": "Région Nord"
           }
         },
         {
           "id": "midden",
           "title": {
             "en": "Central Region",
-            "nl": "Regio Midden"
+            "nl": "Regio Midden",
+            "de": "Zentralregion",
+            "fr": "Région Centrale"
           }
         },
         {
           "id": "zuid",
           "title": {
             "en": "South Region",
-            "nl": "Regio Zuid"
+            "nl": "Regio Zuid",
+            "de": "Südregion",
+            "fr": "Région Sud"
           }
         }
       ],
       "hint": {
         "en": "Select a region",
-        "nl": "Selecteer regio"
+        "nl": "Selecteer regio",
+        "de": "Wählen Sie eine Region",
+        "fr": "Sélectionnez une région"
       }
     },
     {
@@ -47,20 +59,31 @@
       "value": true,
       "title": {
         "en": "Show only first upcoming holiday",
-        "nl": "Toon alleen eerst volgende vakantie"
+        "nl": "Toon alleen eerst volgende vakantie",
+        "de": "Nur den ersten kommenden Urlaub anzeigen",
+        "fr": "Afficher uniquement les premières vacances à venir"
       },
       "hint": {
         "en": "A selected holiday will not be shown anymore.",
-        "nl": "Een gekozen vakantie word niet meer getoond."
+        "nl": "Een gekozen vakantie word niet meer getoond.",
+        "de": "Ein ausgewählter Urlaub wird nicht mehr angezeigt.",
+        "fr": "Les vacances sélectionnées ne seront plus affichées."
       }
     },
     {
       "id": "holiday",
       "type": "autocomplete",
-      "title": { "en": "Holiday", "nl": "Vakantie" },
+      "title": {
+        "en": "Holiday",
+        "nl": "Vakantie",
+        "de": "Urlaub",
+        "fr": "Vacances"
+      },
       "hint": {
         "en": "Select a holiday or leave empty for the next holiday",
-        "nl": "Selecteer een vakantie of laat leeg voor de eerstvolgende vakantie"
+        "nl": "Selecteer een vakantie of laat leeg voor de eerstvolgende vakantie",
+        "de": "Wählen Sie einen Urlaub oder lassen Sie das Feld leer für den nächsten Urlaub",
+        "fr": "Sélectionnez des vacances ou laissez vide pour les prochaines vacances"
       }
     }
   ],

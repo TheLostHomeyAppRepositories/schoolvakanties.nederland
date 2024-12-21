@@ -2,48 +2,64 @@
   "id": "is_school_holiday",
   "title": {
     "en": "It is school holiday",
-    "nl": "Het is schoolvakantie"
+    "nl": "Het is schoolvakantie",
+    "de": "Es sind Schulferien",
+    "fr": "C'est les vacances scolaires"
   },
   "titleFormatted": {
     "en": "[[day]] it !{{is|isn't}} school holiday in [[regio]]",
-    "nl": "[[day]] is het !{{|geen}} schoolvakantie in [[regio]]"
+    "nl": "[[day]] is het !{{|geen}} schoolvakantie in [[regio]]",
+    "de": "[[day]] ist es !{{|kein}} Schulferien in [[regio]]",
+    "fr": "[[day]] c'est !{{|pas}} les vacances scolaires dans [[regio]]"
   },
   "hint": {
     "en": "This flow will continue when there is/isn't a school holiday",
-    "nl": "De flow zal doorgaan als het wel/geen schoolvakantie is"
+    "nl": "De flow zal doorgaan als het wel/geen schoolvakantie is",
+    "de": "Dieser Ablauf wird fortgesetzt, wenn Schulferien sind/nicht sind",
+    "fr": "Ce flux continuera lorsqu'il y a/n'a pas de vacances scolaires"
   },
   "args": [
     {
       "name": "day",
       "title": {
         "en": "Day",
-        "nl": "Dag"
+        "nl": "Dag",
+        "de": "Tag",
+        "fr": "Jour"
       },
       "type": "dropdown",
       "placeholder": {
         "en": "Select a day",
-        "nl": "Selecteer een dag"
+        "nl": "Selecteer een dag",
+        "de": "Wählen Sie einen Tag",
+        "fr": "Sélectionnez un jour"
       },
       "values": [
         {
           "id": "today",
           "label": {
             "en": "Today",
-            "nl": "Vandaag"
+            "nl": "Vandaag",
+            "de": "Heute",
+            "fr": "Aujourd'hui"
           }
         },
         {
           "id": "tomorrow",
           "label": {
             "en": "Tomorrow",
-            "nl": "Morgen"
+            "nl": "Morgen",
+            "de": "Morgen",
+            "fr": "Demain"
           }
         },
         {
           "id": "yesterday",
           "label": {
             "en": "Yesterday",
-            "nl": "Gisteren"
+            "nl": "Gisteren",
+            "de": "Gestern",
+            "fr": "Hier"
           }
         }
       ]
@@ -53,32 +69,42 @@
       "type": "dropdown",
       "title": {
         "en": "Region",
-        "nl": "Regio"
+        "nl": "Regio",
+        "de": "Region",
+        "fr": "Région"
       },
       "placeholder": {
         "en": "Select a region",
-        "nl": "Selecteer een regio"
+        "nl": "Selecteer een regio",
+        "de": "Wählen Sie eine Region",
+        "fr": "Sélectionnez une région"
       },
       "values": [
         {
           "id": "noord",
           "label": {
             "en": "North Region",
-            "nl": "Regio Noord"
+            "nl": "Regio Noord",
+            "de": "Nordregion",
+            "fr": "Région Nord"
           }
         },
         {
           "id": "midden",
           "label": {
             "en": "Central Region",
-            "nl": "Regio Midden"
+            "nl": "Regio Midden",
+            "de": "Zentralregion",
+            "fr": "Région Centrale"
           }
         },
         {
           "id": "zuid",
           "label": {
             "en": "South Region",
-            "nl": "Regio Zuid"
+            "nl": "Regio Zuid",
+            "de": "Südregion",
+            "fr": "Région Sud"
           }
         }
       ]

@@ -1,88 +1,146 @@
 {
   "1.0.0": {
     "en": "First release",
-    "nl": "Eerste release"
+    "nl": "Eerste release",
+    "de": "Erste Veröffentlichung",
+    "fr": "Première version"
   },
   "1.0.1": {
     "en": "Updated github uri",
-    "nl": "Bijgewerkte github uri"
+    "nl": "Bijgewerkte github uri",
+    "de": "Github-URI aktualisiert",
+    "fr": "URI GitHub mise à jour"
   },
   "1.0.2": {
     "en": "Added tokens",
-    "nl": "Tokens toegevoegd"
+    "nl": "Tokens toegevoegd",
+    "de": "Tokens hinzugefügt",
+    "fr": "Jetons ajoutés"
   },
   "1.0.3": {
     "en": "Added token documentation",
-    "nl": "Documentatie voor tokens toegevoegd"
+    "nl": "Documentatie voor tokens toegevoegd",
+    "de": "Token-Dokumentation hinzugefügt",
+    "fr": "Documentation des jetons ajoutée"
   },
   "1.1.0": {
     "en": "Added new condition to specify the type of school holiday",
-    "nl": "Nieuwe voorwaarde toegevoegd om het type schoolvakantie te specificeren"
+    "nl": "Nieuwe voorwaarde toegevoegd om het type schoolvakantie te specificeren",
+    "de": "Neue Bedingung hinzugefügt, um den Typ der Schulferien anzugeben",
+    "fr": "Nouvelle condition ajoutée pour spécifier le type de vacances scolaires"
   },
   "1.1.1": {
     "en": "Added caching to prevent multiple API Calls",
-    "nl": "Caching toegevoegd om meerdere API-oproepen te voorkomen"
+    "nl": "Caching toegevoegd om meerdere API-oproepen te voorkomen",
+    "de": "Caching hinzugefügt, um mehrere API-Aufrufe zu verhindern",
+    "fr": "Mise en cache ajoutée pour éviter plusieurs appels API"
   },
   "1.1.2": {
     "en": "Added settingspage with overview of school holidays",
-    "nl": "Instellingenpagina toegevoegd met overzicht van schoolvakanties"
+    "nl": "Instellingenpagina toegevoegd met overzicht van schoolvakanties",
+    "de": "Einstellungsseite mit Übersicht der Schulferien hinzugefügt",
+    "fr": "Page de paramètres ajoutée avec un aperçu des vacances scolaires"
   },
   "1.1.3": {
     "en": "Added Regions to settingspage and change labelnames.",
-    "nl": "Regio's toegevoegd aan instellingenpagina en labelnamen gewijzigd."
+    "nl": "Regio's toegevoegd aan instellingenpagina en labelnamen gewijzigd.",
+    "de": "Regionen zur Einstellungsseite hinzugefügt und Bezeichnungsnamen geändert.",
+    "fr": "Régions ajoutées à la page des paramètres et noms des étiquettes modifiés."
   },
   "1.1.4": {
     "en": "Fix getting correct calendar data",
-    "nl": "Oplossing voor het verkrijgen van de juiste kalendergegevens"
+    "nl": "Oplossing voor het verkrijgen van de juiste kalendergegevens",
+    "de": "Korrekte Kalenderdaten abrufen behoben",
+    "fr": "Correction de l'obtention des données de calendrier correctes"
   },
   "1.1.5": {
     "en": "Fix switching current years calendar",
-    "nl": "Oplossing voor het wisselen van de kalender van het huidige jaar"
+    "nl": "Oplossing voor het wisselen van de kalender van het huidige jaar",
+    "de": "Fehler beim Wechseln des Kalenders des aktuellen Jahres behoben",
+    "fr": "Correction du changement de calendrier de l'année en cours"
   },
   "1.1.6": {
     "en": "Update settings page",
-    "nl": "Instellingenpagina bijgewerkt"
+    "nl": "Instellingenpagina bijgewerkt",
+    "de": "Einstellungsseite aktualisiert",
+    "fr": "Page des paramètres mise à jour"
   },
   "1.1.7": {
     "en": "Update fix for year listings",
-    "nl": "Update fix voor jaarlijsten"
+    "nl": "Update fix voor jaarlijsten",
+    "de": "Update-Fix für Jahreslisten",
+    "fr": "Correction de mise à jour pour les listes annuelles"
   },
   "1.1.8": {
     "en": "After latest holiday, fetch holidays for next year",
-    "nl": "Na de laatste vakantie, vakanties voor het volgende jaar ophalen"
+    "nl": "Na de laatste vakantie, vakanties voor het volgende jaar ophalen",
+    "de": "Nach dem letzten Feiertag, Feiertage für das nächste Jahr abrufen",
+    "fr": "Après les dernières vacances, récupérer les vacances pour l'année suivante"
   },
   "2.0.0": {
     "en": "You are now able to manage your own custom holidays via settings.",
-    "nl": "Je kunt nu uw eigen aangepaste vakanties beheren via instellingen."
+    "nl": "Je kunt nu uw eigen aangepaste vakanties beheren via instellingen.",
+    "de": "Sie können jetzt Ihre eigenen benutzerdefinierten Feiertage über die Einstellungen verwalten.",
+    "fr": "Vous pouvez désormais gérer vos propres vacances personnalisées via les paramètres."
   },
   "2.1.0": {
-    "en": "Added new widget"
+    "en": "Added new widget",
+    "nl": "Nieuwe widget toegevoegd",
+    "de": "Neues Widget hinzugefügt",
+    "fr": "Nouveau widget ajouté"
   },
   "2.1.1": {
-    "en": "bugfixes"
+    "en": "bugfixes",
+    "nl": "Bugfixes",
+    "de": "Fehlerbehebungen",
+    "fr": "Corrections de bugs"
   },
   "2.1.2": {
-    "en": "Bugfixes"
+    "en": "Bugfixes",
+    "nl": "Bugfixes",
+    "de": "Fehlerbehebungen",
+    "fr": "Corrections de bugs"
   },
   "2.1.3": {
-    "en": "fix incorrect dates"
+    "en": "fix incorrect dates",
+    "nl": "Onjuiste datums corrigeren",
+    "de": "Falsche Daten korrigieren",
+    "fr": "Correction des dates incorrectes"
   },
   "2.1.4": {
-    "en": "Added interval to fetch data and use calendar method from momentjs"
+    "en": "Added interval to fetch data and use calendar method from momentjs",
+    "nl": "Interval toegevoegd om gegevens op te halen en de kalendermethode van momentjs te gebruiken",
+    "de": "Intervall hinzugefügt, um Daten abzurufen und die Kalendermethode von momentjs zu verwenden",
+    "fr": "Intervalle ajouté pour récupérer les données et utiliser la méthode de calendrier de momentjs"
   },
   "2.1.5": {
-    "en": "Made widget bigger"
+    "en": "Made widget bigger",
+    "nl": "Widget groter gemaakt",
+    "de": "Widget vergrößert",
+    "fr": "Widget agrandi"
   },
   "2.2.0": {
-    "en": "Able to update the custom holidays and truncate too long text"
+    "en": "Able to update the custom holidays and truncate too long text",
+    "nl": "In staat om de aangepaste vakanties bij te werken en te lange tekst af te kappen",
+    "de": "In der Lage, die benutzerdefinierten Feiertage zu aktualisieren und zu langen Text zu kürzen",
+    "fr": "Capable de mettre à jour les vacances personnalisées et de tronquer les textes trop longs"
   },
   "2.2.1": {
-    "en": "Bugfixes"
+    "en": "Bugfixes",
+    "nl": "Bugfixes",
+    "de": "Fehlerbehebungen",
+    "fr": "Corrections de bugs"
   },
   "2.2.2": {
-    "en": "Bugfixes"
+    "en": "Bugfixes",
+    "nl": "Bugfixes",
+    "de": "Fehlerbehebungen",
+    "fr": "Corrections de bugs"
   },
   "2.2.3": {
-    "en": "Improve storing widget data and added translations for \"French\" and \"German\""
+    "en": "Improve storing widget data and added translations for \"French\" and \"German\"",
+    "nl": "Verbeterde opslag van widgetgegevens en vertalingen voor \"Frans\" en \"Duits\" toegevoegd",
+    "de": "Verbesserte Speicherung von Widget-Daten und Übersetzungen für \"Französisch\" und \"Deutsch\" hinzugefügt",
+    "fr": "Amélioration du stockage des données du widget et ajout des traductions pour \"Français\" et \"Allemand\""
   }
 }
