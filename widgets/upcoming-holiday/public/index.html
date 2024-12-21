@@ -44,6 +44,13 @@
         const sublabelElement = document.getElementById("sublabel");
         const widgetElement = document.getElementById("homey-widget");
         const settings = Homey.getSettings();
+
+        // Only show first upcoming holiday
+        if (settings.only_upcoming) {
+          clearActiveHoliday();
+        }
+
+        // setActiveHoliday(settings.holiday);
         const activeHoliday = getActiveHoliday();
         let currentHolidayData;
 
@@ -154,6 +161,7 @@
             "ACTIVE_HOLIDAY",
             JSON.stringify(activeHoliday)
           );
+          settings.holiday = activeHoliday;
         }
 
         // Get active holiday from session storage
@@ -165,13 +173,13 @@
           return settings.holiday;
         }
 
-        checkForUpdates();
-
-        // Only show first upcoming holiday
-        if (settings.only_upcoming) {
-          // Clear active holiday from settings
+        // Clear active holiday from session storage
+        function clearActiveHoliday() {
+          sessionStorage.removeItem("ACTIVE_HOLIDAY");
           Homey._settings.holiday = null;
         }
+
+        checkForUpdates();
 
         function daysToGo(startDate) {
           return moment(startDate).calendar();
