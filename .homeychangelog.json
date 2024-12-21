@@ -142,5 +142,8 @@
     "nl": "Verbeterde opslag van widgetgegevens en vertalingen voor \"Frans\" en \"Duits\" toegevoegd",
     "de": "Verbesserte Speicherung von Widget-Daten und Übersetzungen für \"Französisch\" und \"Deutsch\" hinzugefügt",
     "fr": "Amélioration du stockage des données du widget et ajout des traductions pour \"Français\" et \"Allemand\""
+  },
+  "2.2.4": {
+    "en": "Bugfixes"
   }
 }
