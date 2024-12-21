@@ -55,6 +55,10 @@ If you like the app, you are free to sponsor.
 
 ### Release Notes
 
+### 2.2.4
+
+- Bugfixes
+
 ### 2.2.3
 
 - Improve storing widget data
