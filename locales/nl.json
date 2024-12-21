@@ -10,7 +10,10 @@
       "label": "aankomende vakanties"
     },
     "firstUpcomingHoliday": "Eerstvolgende vakantie",
-    "ends": "eindigt"
+    "ends": "eindigt",
+    "until": "tot",
+    "another": "nog",
+    "last_day": "laatste dag"
   },
   "settings": {
     "title": "Beheer je vakanties",

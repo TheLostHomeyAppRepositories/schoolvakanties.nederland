@@ -55,6 +55,11 @@ If you like the app, you are free to sponsor.
 
 ### Release Notes
 
+### 2.2.3
+
+- Improve storing widget data
+- Added translations for "French" and "German"
+
 ### 2.2.2
 
 - Bugfixes

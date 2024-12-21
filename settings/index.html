@@ -3,10 +3,10 @@
     <head>
         <script type="text/javascript" src="/homey.js"
             data-origin="settings"></script>
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/locale/nl.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/locale/nl.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/locale/de.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/locale/fr.min.js"></script>
         <link rel="stylesheet" type="text/css" href="styles.css">
     </head>
     <body>
@@ -19,7 +19,7 @@
                     <div class="homey-form-group">
                         <label class="homey-form-label"
                             for="customLabel">Label:</label>
-                        <input type="text" id="customLabel" name="customLabel" maxlength="150"
+                        <input type="text" id="customLabel" name="customLabel" maxlength="50"
                             class="homey-form-input" required>
                     </div>
                     <div class="input-container">
@@ -244,10 +244,15 @@
             
             <script type="text/javascript">
                 const CUSTOM_DATES_KEY = 'customDates';
-                
+                const SUPPORTED_LANGUAGES = ["nl", "en", "fr", "de"];
+
+                  
                 // Initialize Homey API and set up form functionality
                 async function onHomeyReady(Homey) {
-            
+                    Homey._language = SUPPORTED_LANGUAGES.includes(Homey._language)
+                    ? Homey._language
+                    : "en";
+
                     // Helper functions for Homey settings
                     const getSettings = () =>
                         new Promise((resolve, reject) =>

@@ -1,0 +1,58 @@
+{
+  "tokens": {
+    "yesterday": "Vacances scolaires hier",
+    "today": "Vacances scolaires aujourd'hui",
+    "tomorrow": "Vacances scolaires demain"
+  },
+  "widgets": {
+    "upcomingholiday": {
+      "date": "Non",
+      "label": "vacances à venir"
+    },
+    "firstUpcomingHoliday": "première vacances à venir",
+    "ends": "se termine",
+    "until": "jusqu'à",
+    "another": "autre",
+    "last_day": "dernier jour"
+  },
+  "settings": {
+    "title": "Gérez vos vacances",
+    "subtitle": "Entrez votre propre période de vacances ici",
+    "startDate": "Date de début",
+    "endDate": "Date de fin",
+    "add": "Ajouter",
+    "remove": "Supprimer",
+    "edit": "Modifier",
+    "save": "Enregistrer",
+    "no_holidays": "Aucune vacances prévue",
+    "errors": {
+      "emptyFields": "Remplissez tous les champs"
+    },
+    "region": {
+      "north": "Nord",
+      "middle": "Centre",
+      "south": "Sud"
+    },
+    "regions": {
+      "title": "Régions de vacances scolaires",
+      "intro": "Pour répartir les vacances scolaires, les Pays-Bas sont divisés en 3 régions. Ce sont les régions Nord, Centre et Sud. Cette répartition aide à réduire l'affluence pendant les vacances scolaires.",
+      "intro2": "Vous trouverez ci-dessous un aperçu des régions. Pour chaque région, vous verrez quelles provinces et municipalités appartiennent à la région.",
+      "province": "Province",
+      "municipality": "Municipalité",
+      "all_municipalities": "Toutes les municipalités",
+      "except": "sauf",
+      "north": {
+        "title": "Région Nord",
+        "subtitle": "Division des vacances scolaires pour la région Nord"
+      },
+      "middle": {
+        "title": "Région Centre",
+        "subtitle": "Division des vacances scolaires pour la région Centre"
+      },
+      "south": {
+        "title": "Région Sud",
+        "subtitle": "Division des vacances scolaires pour la région Sud"
+      }
+    }
+  }
+}

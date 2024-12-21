@@ -10,7 +10,10 @@
       "label": "upcoming holidays"
     },
     "firstUpcomingHoliday": "first upcoming holiday",
-    "ends": "ends"
+    "ends": "ends",
+    "until": "until",
+    "another": "another",
+    "last_day": "last day"
   },
   "settings": {
     "title": "Manage your holidays",

@@ -4,8 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Holiday Widget</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/locale/nl.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/locale/nl.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/locale/de.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/locale/fr.min.js"></script>
     <link rel="stylesheet" href="styles.css" />
   </head>
 
@@ -33,9 +35,27 @@
 
     <script type="text/javascript">
       function onHomeyReady(Homey) {
-        Homey.ready();
+        const SUPPORTED_LANGUAGES = ["nl", "en", "fr", "de"];
+        const CUSTOM_DATES_KEY = "customDates";
+        const DATE_FORMAT = "YYYY-MM-DD";
+        const TODAY = moment().format(DATE_FORMAT);
+        const startDateElement = document.getElementById("date");
+        const labelElement = document.getElementById("label");
+        const sublabelElement = document.getElementById("sublabel");
+        const widgetElement = document.getElementById("homey-widget");
+        const settings = Homey.getSettings();
+        const activeHoliday = getActiveHoliday();
+        let currentHolidayData;
+
+        // Set language and locale for moment.js
+        Homey._language = SUPPORTED_LANGUAGES.includes(Homey._language)
+          ? Homey._language
+          : "en";
+
+        // Set moment.js locale
         moment.locale(Homey._language);
 
+        // Set custom date format for languages
         calendar = {
           nl: {
             sameDay: "[Vandaag]",
@@ -57,27 +77,99 @@
               return `[${moment(this).fromNow()}]`;
             },
           },
+          fr: {
+            sameDay: "[Aujourd'hui]",
+            nextDay: "[Demain]",
+            nextWeek: "dddd",
+            lastDay: "[Hier]",
+            lastWeek: "[Dernier] dddd",
+            sameElse: function () {
+              return `[${moment(this).fromNow()}]`;
+            },
+          },
+          de: {
+            sameDay: "[Heute]",
+            nextDay: "[Morgen]",
+            nextWeek: "dddd",
+            lastDay: "[Gestern]",
+            lastWeek: "[Letzten] dddd",
+            sameElse: function () {
+              return `[${moment(this).fromNow()}]`;
+            },
+          },
         };
 
+        endCalendar = {
+          nl: {
+            sameDay: "[Tot vandaag]",
+            nextDay: "[Tot morgen]",
+            nextWeek: "dddd",
+            lastDay: "[Eindigde gisteren]",
+            lastWeek: "[Eindigde afgelopen] dddd",
+            sameElse: function () {
+              return `[Nog ${moment(this).from(TODAY, true)}]`;
+            },
+          },
+          en: {
+            sameDay: "[Until today]",
+            nextDay: "[Until tomorrow]",
+            nextWeek: "dddd",
+            lastDay: "[Ended yesterday]",
+            lastWeek: "[Ended last] dddd",
+            sameElse: function () {
+              return `[Another ${moment(this).from(TODAY, true)}]`;
+            },
+          },
+          fr: {
+            sameDay: "[Jusqu'à aujourd'hui]",
+            nextDay: "[Jusqu'à demain]",
+            nextWeek: "dddd",
+            lastDay: "[Terminé hier]",
+            lastWeek: "[Terminé dernier] dddd",
+            sameElse: function () {
+              return `[Encore ${moment(this).from(TODAY, true)}]`;
+            },
+          },
+          de: {
+            sameDay: "[Bis heute]",
+            nextDay: "[Bis morgen]",
+            nextWeek: "dddd",
+            lastDay: "[Endete gestern]",
+            lastWeek: "[Endete letzten] dddd",
+            sameElse: function () {
+              return `[Noch ${moment(this).from(TODAY, true)}]`;
+            },
+          },
+        };
+
+        // Update moment.js locale with custom calendar formats
         moment.updateLocale(Homey._language, {
           calendar: calendar[Homey._language],
+          endCalendar: endCalendar[Homey._language],
         });
 
-        let currentHolidayData;
+        // Store active holiday in session storage
+        function setActiveHoliday(activeHoliday) {
+          sessionStorage.setItem(
+            "ACTIVE_HOLIDAY",
+            JSON.stringify(activeHoliday)
+          );
+        }
 
-        const CUSTOM_DATES_KEY = "customDates";
-        const DATE_FORMAT = "YYYY-MM-DD";
-        const TODAY = moment().format(DATE_FORMAT);
-        const startDateElement = document.getElementById("date");
-        const labelElement = document.getElementById("label");
-        const sublabelElement = document.getElementById("sublabel");
-        const widgetElement = document.getElementById("homey-widget");
-        const settings = Homey.getSettings();
+        // Get active holiday from session storage
+        function getActiveHoliday() {
+          const activeHoliday = sessionStorage.getItem("ACTIVE_HOLIDAY");
+          if (activeHoliday) {
+            return JSON.parse(activeHoliday);
+          }
+          return settings.holiday;
+        }
 
         checkForUpdates();
 
         // Only show first upcoming holiday
         if (settings.only_upcoming) {
+          // Clear active holiday from settings
           Homey._settings.holiday = null;
         }
 
@@ -86,7 +178,7 @@
         }
 
         function daysRemaining(endDate) {
-          return `${moment(endDate).calendar().toLowerCase()}`;
+          return moment(endDate).calendar(null, endCalendar[Homey._language]);
         }
 
         // Schedule next fetch
@@ -105,7 +197,10 @@
         function updateUI(holiday) {
           if (holiday.isActive) {
             widgetElement.classList.add("is-active");
-            labelElement.textContent = moment(holiday.startDate).format("LL");
+            // labelElement.textContent = moment(holiday.startDate).format("LL");
+            labelElement.textContent = `${Homey.__("widgets.until")} ${moment(
+              holiday.endDate
+            ).format("LL")}`;
             sublabelElement.textContent = daysRemaining(holiday.endDate);
             startDateElement.textContent = holiday.label;
           } else {
@@ -142,9 +237,9 @@
         // Fetch a single holiday from settings
         async function fetchHoliday() {
           try {
-            const holidayData = await createHolidayData(settings.holiday);
+            const holidayData = await createHolidayData(activeHoliday);
             currentHolidayData = holidayData;
-
+            setActiveHoliday(holidayData);
             updateUI(holidayData);
           } catch (error) {
             console.error("Error processing holiday data:", error);
@@ -157,6 +252,7 @@
             if (currentHolidayData?.id === holidayId) {
               if (moment().isBefore(data.endDate)) {
                 const updatedHoliday = await createHolidayData(data);
+                setActiveHoliday(data);
                 updateUI(updatedHoliday);
               } else {
                 fetchAllData();
@@ -197,7 +293,7 @@
 
         // Determine which holiday data to fetch
         async function fetchAllData() {
-          if (settings.holiday) {
+          if (activeHoliday) {
             fetchHoliday();
           } else {
             fetchUpcomingHolidays();
@@ -207,6 +303,7 @@
         // Initial fetch of holiday data
         fetchAllData();
         scheduleNextFetch();
+        Homey.ready();
       }
     </script>
   </body>

@@ -1,0 +1,58 @@
+{
+  "tokens": {
+    "yesterday": "Schulferien gestern",
+    "today": "Schulferien heute",
+    "tomorrow": "Schulferien morgen"
+  },
+  "widgets": {
+    "upcomingholiday": {
+      "date": "Nein",
+      "label": "kommende Ferien"
+    },
+    "firstUpcomingHoliday": "erste kommende Ferien",
+    "ends": "endet",
+    "until": "bis",
+    "another": "ein weiterer",
+    "last_day": "letzter Tag"
+  },
+  "settings": {
+    "title": "Verwalten Sie Ihre Ferien",
+    "subtitle": "Geben Sie hier Ihren eigenen Ferienzeitraum ein",
+    "startDate": "Startdatum",
+    "endDate": "Enddatum",
+    "add": "Hinzufügen",
+    "remove": "Entfernen",
+    "edit": "Ändern",
+    "save": "Speichern",
+    "no_holidays": "Keine Ferien geplant",
+    "errors": {
+      "emptyFields": "Füllen Sie alle Felder aus"
+    },
+    "region": {
+      "north": "Nord",
+      "middle": "Mitte",
+      "south": "Süd"
+    },
+    "regions": {
+      "title": "Schulferienregionen",
+      "intro": "Um die Schulferien zu verteilen, ist die Niederlande in 3 Regionen unterteilt. Dies sind die Nord-, Mittel- und Südregionen. Diese Verteilung hilft, Ferienüberlastungen während der Schulferien zu reduzieren.",
+      "intro2": "Nachfolgend finden Sie eine Übersicht der Regionen. Für jede Region sehen Sie, welche Provinzen und Gemeinden zur Region gehören.",
+      "province": "Provinz",
+      "municipality": "Gemeinde",
+      "all_municipalities": "Alle Gemeinden",
+      "except": "außer",
+      "north": {
+        "title": "Nordregion",
+        "subtitle": "Schulferienaufteilung für die Nordregion"
+      },
+      "middle": {
+        "title": "Mittelregion",
+        "subtitle": "Schulferienaufteilung für die Mittelregion"
+      },
+      "south": {
+        "title": "Südregion",
+        "subtitle": "Schulferienaufteilung für die Südregion"
+      }
+    }
+  }
+}

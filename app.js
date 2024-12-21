@@ -6,6 +6,7 @@ const Moment = require("moment");
 const MomentRange = require("moment-range");
 const moment = MomentRange.extendMoment(Moment); // Extend moment with moment-range
 
+const SUPPORTED_LANGUAGES = ["nl", "en", "de", "fr"];
 const CUSTOM_DATES_KEY = "customDates";
 const DATE_FORMAT = "YYYY-MM-DD";
 const DATE_PRETTY_FORMAT = "LL";
@@ -14,8 +15,12 @@ const API_ENDPOINT =
 
 class SchoolHolidayApp extends Homey.App {
   async onInit() {
+    const language = SUPPORTED_LANGUAGES.includes(this.homey.i18n.getLanguage())
+      ? this.homey.i18n.getLanguage()
+      : "en";
+
     this.log("School Holidays Netherlands initialized");
-    moment.locale(this.homey.i18n.getLanguage());
+    moment.locale(language);
     this.schoolyear = null;
     this.cachedHolidayData = [];
 
@@ -252,6 +257,12 @@ class SchoolHolidayApp extends Homey.App {
   }
 
   async saveHoliday(id, data) {
+    console.log("saveHoliday", id, data);
+
+    console.log(
+      "this.homey.settings.get",
+      this.homey.settings.get(CUSTOM_DATES_KEY)
+    );
     this.homey.api.realtime("updateHolidayEvent", data);
   }
 
@@ -272,15 +283,15 @@ class SchoolHolidayApp extends Homey.App {
       this.homey.settings.get(CUSTOM_DATES_KEY) || []
     ).filter((item) => {
       const endDate = moment(item.endDate, DATE_FORMAT);
-      return moment().isBefore(endDate, "day");
+      return moment().isSameOrBefore(endDate, "day");
     });
     customDates?.forEach((item) => {
-      (item.isActive = moment({ hours: 0 }).isBetween(
+      item.isActive = moment({ hours: 0 }).isBetween(
         item.startDate,
         item.endDate,
         "day"
-      )),
-        (item.isSchoolHoliday = false);
+      );
+      item.isSchoolHoliday = false;
     });
 
     const regionDates = regions
@@ -299,7 +310,9 @@ class SchoolHolidayApp extends Homey.App {
         return null;
       })
       .filter(Boolean) // Remove null values
-      .filter((holiday) => moment().isBefore(moment(holiday.endDate), "day")); // Filter out past holidays
+      .filter((holiday) =>
+        moment().isSameOrBefore(moment(holiday.endDate), "day")
+      ); // Filter out past holidays
 
     const allHolidays = [...regionDates, ...customDates]
       .sort((a, b) => new Date(a.startDate) - new Date(b.startDate)) // Sort by startDate
