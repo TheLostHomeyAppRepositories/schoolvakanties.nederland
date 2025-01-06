@@ -208,10 +208,10 @@ class SchoolHolidayApp extends Homey.App {
     widget.registerSettingAutocompleteListener(
       "holiday",
       async (query, settings) => {
-        const upcomingHolidays = await this.getUpcomingHolidays(
-          settings.regio,
-          12
-        );
+        const upcomingHolidays = await this.getUpcomingHolidays({
+          region: settings.regio,
+          count: 12,
+        });
         return upcomingHolidays
           .filter((item) =>
             item.label.toLowerCase().includes(query.toLowerCase())
@@ -246,7 +246,7 @@ class SchoolHolidayApp extends Homey.App {
       }));
   }
 
-  async getUpcomingHolidays(region, count = 3) {
+  async getUpcomingHolidays({ region, count = 3 }) {
     const regions = await this.fetchHolidays();
     const upcomingHolidays = this.processUpcomingHolidays(
       regions.vacations,
