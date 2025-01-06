@@ -1,14 +1,19 @@
-Vacances scolaires aux Pays-Bas – Vérifiez facilement si c'est les vacances !
+Vacances Scolaires aux Pays-Bas – Vérifiez facilement le statut des vacances !
 
-Voulez-vous savoir si aujourd'hui, hier ou demain c'est les vacances scolaires aux Pays-Bas ? Avec cette application Homey, vous pouvez facilement vérifier s'il y a des vacances dans votre région et quelles vacances c'est exactement.
+Cette application vous permet de déterminer rapidement si aujourd'hui, hier ou demain est un jour de vacances scolaires aux Pays-Bas. Elle fournit des informations complètes sur les vacances dans différentes régions (Nord, Centre, Sud) et divers types de vacances telles que les vacances d'automne, les vacances de Noël, les vacances de printemps, les vacances de mai et les vacances d'été. Vous pouvez également gérer des vacances personnalisées et obtenir un aperçu de toutes les vacances par région. L'application inclut des jetons pour intégrer les vérifications des vacances dans vos flux de travail, ce qui facilite l'automatisation des actions basées sur les vacances scolaires et personnalisées.
 
-Que pouvez-vous faire ici ?
+Caractéristiques :
 
-- Voir si aujourd'hui, hier ou demain c'est les vacances scolaires dans la Région Nord, Région Centre ou Région Sud.
+- Vérifiez si aujourd'hui, hier ou demain est un jour de vacances dans la région Nord, la région Centre ou la région Sud.
 - Obtenez des détails sur des vacances spécifiques comme les vacances d'automne, les vacances de Noël, les vacances de printemps, les vacances de mai et les vacances d'été.
-- Gérez vos propres vacances : ajoutez des vacances personnalisées ou supprimez les vacances existantes qui ne sont pas pertinentes pour vous.
-- Voir un aperçu complet de toutes les vacances scolaires par région aux Pays-Bas.
+- Gérez vos propres vacances : ajoutez des vacances personnalisées ou supprimez celles qui sont non pertinentes.
+- Consultez un aperçu complet de toutes les vacances scolaires par région aux Pays-Bas.
+- Utilisez le widget pour ajouter à votre tableau de bord, affichant la prochaine vacance à venir ou une vacance spécifique choisie.
 
 Exemple d'utilisation :
-- Automatisation : Supposons que votre réveil sonne le matin. Si ce n'est pas les vacances scolaires, laissez le réveil jouer de la musique du matin. Est-ce les vacances de Noël ? Alors vous pouvez choisir des chansons de Noël atmosphériques.
-Avec cet outil, vous avez toujours un aperçu rapide des vacances scolaires, afin que vous puissiez facilement ajuster votre planning !
+
+- Supposons que votre réveil du matin se déclenche. Si ce n'est pas un jour de vacances scolaires, laissez l'alarme jouer de la musique de réveil matinale.
+- Si c'est les vacances de Noël, vous pouvez choisir des airs festifs de vacances à la place.
+- Si c'est un jour de vacances (scolaires), vous pouvez ignorer votre réveil.
+
+Restez informé des vacances scolaires et personnalisées et ajustez vos plans en conséquence avec cet outil !

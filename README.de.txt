@@ -1,14 +1,19 @@
-Schulferien Niederlande – Überprüfen Sie einfach, ob Ferien sind!
+Schulferien in den Niederlanden – Einfach den Ferienstatus überprüfen!
 
-Möchten Sie wissen, ob heute, gestern oder morgen Schulferien in den Niederlanden sind? Mit dieser Homey-App können Sie einfach überprüfen, ob in Ihrer Region Ferien sind und um welche Ferien es sich genau handelt.
+Diese App ermöglicht es Ihnen, schnell festzustellen, ob heute, gestern oder morgen ein Schulferientag in den Niederlanden ist. Sie bietet umfassende Informationen über Ferien in verschiedenen Regionen (Nord, Mitte, Süd) und verschiedene Arten von Ferien wie Herbstferien, Weihnachtsferien, Frühlingsferien, Maiferien und Sommerferien. Sie können auch benutzerdefinierte Ferien verwalten und einen Überblick über alle Ferien pro Region erhalten. Die App enthält Tokens zur Integration von Ferienprüfungen in Ihre Workflows, sodass Sie Aktionen basierend auf Schul- und benutzerdefinierten Ferien einfach automatisieren können.
 
-Was können Sie hier tun?
+Funktionen:
 
-- Überprüfen Sie, ob heute, gestern oder morgen Schulferien in der Region Nord, Region Mitte oder Region Süd sind.
-- Erhalten Sie Details zu bestimmten Ferien wie Herbstferien, Weihnachtsferien, Frühjahrsferien, Maiferien und Sommerferien.
-- Verwalten Sie Ihre eigenen Ferien: Fügen Sie benutzerdefinierte Ferien hinzu oder entfernen Sie bestehende Ferien, die für Sie nicht relevant sind.
-- Sehen Sie eine vollständige Übersicht aller Schulferien pro Region in den Niederlanden.
+- Überprüfen Sie, ob heute, gestern oder morgen ein Ferientag in Region Nord, Region Mitte oder Region Süd ist.
+- Erhalten Sie Details zu bestimmten Ferien wie Herbstferien, Weihnachtsferien, Frühlingsferien, Maiferien und Sommerferien.
+- Verwalten Sie Ihre eigenen Ferien: Fügen Sie benutzerdefinierte Ferien hinzu oder entfernen Sie irrelevante.
+- Sehen Sie sich eine vollständige Übersicht aller Schulferien nach Region in den Niederlanden an.
+- Verwenden Sie das Widget, um es Ihrem Dashboard hinzuzufügen und die nächste bevorstehende Ferien oder eine bestimmte ausgewählte Ferien anzuzeigen.
 
-Beispielnutzung:
-- Automatisierung: Angenommen, Ihr Wecker klingelt morgens. Wenn keine Schulferien sind, lassen Sie den Wecker Morgenmusik spielen. Sind es Weihnachtsferien? Dann können Sie sich für stimmungsvolle Weihnachtslieder entscheiden.
-Mit diesem Tool haben Sie immer schnell Einblick in die Schulferien, sodass Sie Ihre Planung einfach anpassen können!
+Beispielanwendung:
+
+- Angenommen, Ihr Morgenwecker klingelt. Wenn es kein Schulferientag ist, lassen Sie den Wecker Morgenaufwachmusik spielen.
+- Wenn es Weihnachtsferien sind, können Sie stattdessen festliche Feiertagsmusik wählen.
+- Wenn es ein (Schul-)Ferientag ist, können Sie Ihren Wecker überspringen.
+
+Bleiben Sie über Schul- und benutzerdefinierte Ferien informiert und passen Sie Ihre Pläne entsprechend mit diesem Tool an!

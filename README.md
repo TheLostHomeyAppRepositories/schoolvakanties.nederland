@@ -1,5 +1,7 @@
 # Schoolvakanties
 
+This app allows you to check if today, yesterday, or tomorrow is a (school) holiday in the Netherlands. It provides detailed information about school holidays in different regions (North, Central, South) and various types of holidays such as Autumn break, Christmas break, Spring break, May holidays, and Summer holidays. You can also add and manage custom holidays and get an overview of all holidays per region. The app includes tokens for integrating holiday checks into your flows, making it easy to automate actions based on school holidays.
+
 Check if today / yesterday / tomorrow is a (school) holiday in the Netherlands.
 
 ![image][storebackdrop]
