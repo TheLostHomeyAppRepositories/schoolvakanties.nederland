@@ -151,5 +151,8 @@
   },
   "2.2.6": {
     "en": "Add new descriptions"
+  },
+  "2.2.7": {
+    "en": "Updated app.json descriptions"
   }
 }

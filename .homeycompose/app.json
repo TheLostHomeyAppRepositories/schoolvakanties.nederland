@@ -1,6 +1,6 @@
 {
   "id": "schoolvakanties.nederland",
-  "version": "2.2.6",
+  "version": "2.2.7",
   "compatibility": ">=12.1.0",
   "sdk": 3,
   "name": {
@@ -15,7 +15,9 @@
     "fr": "Vacances scolaires à utiliser dans votre flux",
     "de": "Schulferien zur Verwendung in Ihrem Flow"
   },
-  "category": ["tools"],
+  "category": [
+    "tools"
+  ],
   "permissions": [],
   "brandColor": "#01689b",
   "images": {
@@ -40,10 +42,22 @@
     }
   },
   "tags": {
-    "en": ["school", "holiday"],
-    "nl": ["school", "vakantie"],
-    "fr": ["école", "vacances"],
-    "de": ["Schule", "Ferien"]
+    "en": [
+      "school",
+      "holiday"
+    ],
+    "nl": [
+      "school",
+      "vakantie"
+    ],
+    "fr": [
+      "école",
+      "vacances"
+    ],
+    "de": [
+      "Schule",
+      "Ferien"
+    ]
   },
   "api": {
     "getHolidays": {
@@ -59,7 +73,9 @@
       "path": "/holiday/:id"
     }
   },
-  "platforms": ["local"],
+  "platforms": [
+    "local"
+  ],
   "contributors": {
     "developers": [
       {
