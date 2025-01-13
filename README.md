@@ -57,6 +57,14 @@ If you like the app, you are free to sponsor.
 
 ### Release Notes
 
+### 2.2.7
+
+- Updated app.json
+
+### 2.2.6
+
+- Updated app.json
+
 ### 2.2.5
 
 - Bugfixes

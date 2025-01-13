@@ -15,9 +15,7 @@
     "fr": "Vacances scolaires à utiliser dans votre flux",
     "de": "Schulferien zur Verwendung in Ihrem Flow"
   },
-  "category": [
-    "tools"
-  ],
+  "category": ["tools"],
   "permissions": [],
   "brandColor": "#01689b",
   "images": {
@@ -29,7 +27,7 @@
   "bugs": {
     "url": "https://github.com/elmarkou/homey.schoolvakanties.nederland/issues"
   },
-  "support": "mailto:elmarkou@gmail.com",
+  "support": "https://community.homey.app/t/app-pro-schoolvakanties/127566",
   "author": {
     "name": "Elmar Kouwenhoven",
     "email": "elmarkou@gmail.com"
@@ -42,22 +40,10 @@
     }
   },
   "tags": {
-    "en": [
-      "school",
-      "holiday"
-    ],
-    "nl": [
-      "school",
-      "vakantie"
-    ],
-    "fr": [
-      "école",
-      "vacances"
-    ],
-    "de": [
-      "Schule",
-      "Ferien"
-    ]
+    "en": ["school", "holiday"],
+    "nl": ["school", "vakantie"],
+    "fr": ["école", "vacances"],
+    "de": ["Schule", "Ferien"]
   },
   "api": {
     "getHolidays": {
@@ -73,14 +59,18 @@
       "path": "/holiday/:id"
     }
   },
-  "platforms": [
-    "local"
-  ],
+  "platforms": ["local"],
   "contributors": {
     "developers": [
       {
         "name": "Elmar Kouwenhoven"
       }
+    ],
+    "translators": [
+      {
+        "name": "ChatGPT"
+      }
     ]
-  }
+  },
+  "homeyCommunityTopicId": 127566
 }

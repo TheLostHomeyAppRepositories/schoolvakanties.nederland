@@ -30,7 +30,7 @@
   "bugs": {
     "url": "https://github.com/elmarkou/homey.schoolvakanties.nederland/issues"
   },
-  "support": "mailto:elmarkou@gmail.com",
+  "support": "https://community.homey.app/t/app-pro-schoolvakanties/127566",
   "author": {
     "name": "Elmar Kouwenhoven",
     "email": "elmarkou@gmail.com"
@@ -82,8 +82,14 @@
       {
         "name": "Elmar Kouwenhoven"
       }
+    ],
+    "translators": [
+      {
+        "name": "ChatGPT"
+      }
     ]
   },
+  "homeyCommunityTopicId": 127566,
   "flow": {
     "conditions": [
       {
