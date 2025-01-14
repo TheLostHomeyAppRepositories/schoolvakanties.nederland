@@ -1,8 +1,21 @@
 /* Example of a custom SCSS class */
-.homey-widget {
+html {
   background: linear-gradient(90deg, rgba(0, 65, 96, 1) 0%, rgba(1, 104, 155, 1) 100%);
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+.homey-widget {
+  display: flex;
+  width: 62px;
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  align-items: center;
   color: var(--homey-text-color-white);
-
+  margin: 0 auto;
+  padding: var(--homey-su-2 );
   .labelgroup {
     display: flex;
     width: 100%;
@@ -14,20 +27,25 @@
     display: flex;
     gap: 10px;
     align-items: center;
+    width: 100%;
   }
 
   .homey-text-h1 {
-    font-size: var(--homey-font-size-xlarge);
+    font-size: var(--homey-font-size-large);
     max-width: 275px;
   }
 
   .homey-text-regular {
-    font-size: var(--homey-font-size-medium);
-    font-weight: var(--homey-font-weight-medium);
-    max-width: 180px;
+    font-size: var(--homey-font-size-small);
+    flex: 1 1 100%;
+    min-width: 0;
+    color: var(--homey-text-color-white);
+    display: grid;
   }
   .homey-text-small {
-    color: var(--homey-text-color-white);
+    font-size: var(--homey-font-size-small);   
+    white-space: nowrap;
+    width: auto;
   }
 
   &.custom-holiday .icon {
@@ -45,8 +63,7 @@
   .text-truncate {
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
-   
+    text-overflow: ellipsis;   
   }
 }
 
