@@ -154,5 +154,8 @@
   },
   "2.2.7": {
     "en": "Updated app.json descriptions"
+  },
+  "2.2.8": {
+    "en": "Some minor fixes"
   }
 }
